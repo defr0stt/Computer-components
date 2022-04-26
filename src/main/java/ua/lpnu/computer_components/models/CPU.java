@@ -169,6 +169,7 @@ public class CPU {
     public String toString() {
         return "CPU{" +
                 "id=" + id +
+                ", typeOfComponent='" + typeOfComponent + '\'' +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", socket='" + socket + '\'' +
