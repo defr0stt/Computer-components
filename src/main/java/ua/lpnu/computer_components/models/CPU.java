@@ -4,16 +4,27 @@ import javax.persistence.*;
 
 @Entity // for hibernate
 @Table(name = "cpu")  // for table in DB
-@PrimaryKeyJoinColumn(name = "id")
+@PrimaryKeyJoinColumn(name = "component_id")
 public class CPU extends Component {
 
 //    CPU cpu = new CPU("CPU","AMD RYZEN 3750H","Mobile","FP5",1042.0,2019,2300,4,8,105.0);
 
+    @Column(name="cpu_type")
     private String type;
+
+    @Column(name="cpu_socket")
     private String socket;
+
+    @Column(name="cpu_frequency")
     private Integer baseFrequency;
+
+    @Column(name="cpu_cores")
     private Integer core;
+
+    @Column(name="cpu_threads")
     private Integer threadCount;
+
+    @Column(name="cpu_temp")
     private Double maxTemperature;
 
     public CPU() {

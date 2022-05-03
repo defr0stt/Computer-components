@@ -16,10 +16,19 @@ public abstract class Component {
             strategy = GenerationType.SEQUENCE,
             generator = "component_sequence"
     )
+    @Column(name="component_id")
     private Long id;
+
+    @Column(name="component_type")
     private String typeOfComponent;
+
+    @Column(name="component_name")
     private String name;
+
+    @Column(name="component_price")
     private Double price;
+
+    @Column(name="component_year")
     private Integer year;
 
     public Component(Long id, String typeOfComponent, String name, Double price, Integer year) {
