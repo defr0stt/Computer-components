@@ -3,26 +3,14 @@ package ua.lpnu.computer_components.models;
 import javax.persistence.*;
 
 @Entity // for hibernate
-@Table  // for table in DB
-public class CPU {
-    @Id
-    @SequenceGenerator(                     // створення сутності
-            name = "cpu_sequence",
-            sequenceName = "cpu_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "cpu_sequence"
-    )
+@Table(name = "cpu")  // for table in DB
+@PrimaryKeyJoinColumn(name = "id")
+public class CPU extends Component {
 
-    private Long id;
-    private String typeOfComponent;
-    private String name;
+//    CPU cpu = new CPU("CPU","AMD RYZEN 3750H","Mobile","FP5",1042.0,2019,2300,4,8,105.0);
+
     private String type;
     private String socket;
-    private Double price;
-    private Integer year;
     private Integer baseFrequency;
     private Integer core;
     private Integer threadCount;
@@ -42,13 +30,9 @@ public class CPU {
                Integer core,
                Integer threadCount,
                Double maxTemperature) {
-        this.id = id;
-        this.typeOfComponent = typeOfComponent;
-        this.name = name;
+        super(id, typeOfComponent, name, price, year);
         this.type = type;
         this.socket = socket;
-        this.price = price;
-        this.year = year;
         this.baseFrequency = baseFrequency;
         this.core = core;
         this.threadCount = threadCount;
@@ -65,40 +49,13 @@ public class CPU {
                Integer core,
                Integer threadCount,
                Double maxTemperature) {
-        this.typeOfComponent = typeOfComponent;
-        this.name = name;
+        super(typeOfComponent, name, price, year);
         this.type = type;
         this.socket = socket;
-        this.price = price;
-        this.year = year;
         this.baseFrequency = baseFrequency;
         this.core = core;
         this.threadCount = threadCount;
         this.maxTemperature = maxTemperature;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTypeOfComponent() {
-        return typeOfComponent;
-    }
-
-    public void setTypeOfComponent(String typeOfComponent) {
-        this.typeOfComponent = typeOfComponent;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getType() {
@@ -115,22 +72,6 @@ public class CPU {
 
     public void setSocket(String socket) {
         this.socket = socket;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
     }
 
     public Integer getBaseFrequency() {
@@ -168,13 +109,13 @@ public class CPU {
     @Override
     public String toString() {
         return "CPU{" +
-                "id=" + id +
-                ", typeOfComponent='" + typeOfComponent + '\'' +
-                ", name='" + name + '\'' +
+                "id=" + getId() +
+                ", typeOfComponent='" + getTypeOfComponent() + '\'' +
+                ", name='" + getName() + '\'' +
                 ", type='" + type + '\'' +
                 ", socket='" + socket + '\'' +
-                ", price=" + price +
-                ", year=" + year +
+                ", price=" + getPrice() +
+                ", year=" + getYear() +
                 ", baseFrequency=" + baseFrequency +
                 ", core=" + core +
                 ", threadCount=" + threadCount +
