@@ -6,10 +6,14 @@
     margin: 40px 150px 0 100px;
 }
 
-.fireImageAbout{
-    margin: -70px 0 0 440px;
+img.fireImageAbout{
+    display: block;
+    margin-top: -70px;
+    margin-left: 350px;
 }
 
-.verticalHorizontal {
-    margin: 0 0 0 570px;
+img.verticalHorizontal {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
