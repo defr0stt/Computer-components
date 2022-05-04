@@ -1,0 +1,22 @@
+.icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forSVG{
+    padding: 7px;
+}
+
+.marginListText{
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
