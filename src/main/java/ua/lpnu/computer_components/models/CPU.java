@@ -3,7 +3,7 @@ package ua.lpnu.computer_components.models;
 import javax.persistence.*;
 
 @Entity // for hibernate
-@Table(name = "cpu")  // for table in DB
+@Table(name = "cpu_details")  // for table in DB
 @PrimaryKeyJoinColumn(name = "component_id")
 public class CPU extends Component {
 

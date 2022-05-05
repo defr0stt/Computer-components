@@ -3,7 +3,7 @@ package ua.lpnu.computer_components.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="components")
+@Table(name="component")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Component {
     @Id

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import ua.lpnu.computer_components.models.CPU;
 import ua.lpnu.computer_components.models.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository     // data access
@@ -14,4 +15,5 @@ public interface ComponentRepository extends JpaRepository<Component,Long> {    
     // same to : SELECT * FROM cpu WHERE name = '...'
     // @Query("SELECT c FROM CPU c WHERE c.name = '...'")
     Optional<Component> findComponentByName(String name);
+    List<Component> findByTypeOfComponent(String type);
 }

@@ -29,6 +29,21 @@ public class ComponentService {
         componentRepository.save(component);
     }
 
+    public boolean existComponent(Long id){
+        if(componentRepository.existsById(id)){
+            return true;
+        }
+        return false;
+    }
+
+    public Optional<Component> findComponentById(Long id){
+        return componentRepository.findById(id);
+    }
+
+    public List<Component> findComponentByType(String type){
+        return componentRepository.findByTypeOfComponent(type);
+    }
+
     public void deleteComponent(Long id) {
         if(componentRepository.existsById(id)){
             componentRepository.deleteById(id);
