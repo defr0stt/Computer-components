@@ -16,7 +16,7 @@
 
 
 <!--header варіант №2-->
-<nav th:fragment="header1" class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center fixed-top">
+<nav th:fragment="header1" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
@@ -24,13 +24,22 @@
       </svg>
       Computer components &nbsp; &nbsp;
     </a>
+<!--
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/list">List of components</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Compare components</a>
@@ -40,13 +49,47 @@
         </li>
       </ul>
     </div>
+-->
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            List of components
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="/list">All components</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/list/cpu">CPU</a></li>
+            <li><a class="dropdown-item" href="#">GPU card</a></li>
+            <li><a class="dropdown-item" href="#">Memory</a></li>
+            <li><a class="dropdown-item" href="#">Motherboard</a></li>
+            <li><a class="dropdown-item" href="#">PC case</a></li>
+            <li><a class="dropdown-item" href="#">Storage</a></li>
+            <li><a class="dropdown-item" href="#">Cooler</a></li>
+            <li><a class="dropdown-item" href="#">OS</a></li>
+            <li><a class="dropdown-item" href="#">Power supply</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Compare components</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About us</a>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </nav>
 
 
 <!--------------------------------------------------------------------------------------------->
 
-<nav th:fragment="header2" class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center fixed-top">
+<nav th:fragment="header2" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
@@ -54,13 +97,29 @@
       </svg>
       Computer components &nbsp; &nbsp;
     </a>
+
     <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/list">List of components</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDarkDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            List of components
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="/list">All components</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/list/cpu">CPU</a></li>
+            <li><a class="dropdown-item" href="#">GPU card</a></li>
+            <li><a class="dropdown-item" href="#">Memory</a></li>
+            <li><a class="dropdown-item" href="#">Motherboard</a></li>
+            <li><a class="dropdown-item" href="#">PC case</a></li>
+            <li><a class="dropdown-item" href="#">Storage</a></li>
+            <li><a class="dropdown-item" href="#">Cooler</a></li>
+            <li><a class="dropdown-item" href="#">OS</a></li>
+            <li><a class="dropdown-item" href="#">Power supply</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Compare components</a>
@@ -70,12 +129,13 @@
         </li>
       </ul>
     </div>
+
   </div>
 </nav>
 
 <!--------------------------------------------------------------------------------------------->
 
-<nav th:fragment="header3" class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center fixed-top">
+<nav th:fragment="header3" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
@@ -83,13 +143,29 @@
       </svg>
       Computer components &nbsp; &nbsp;
     </a>
+
     <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/list">List of components</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDarkDropdownMenuLink3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            List of components
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="/list">All components</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/list/cpu">CPU</a></li>
+            <li><a class="dropdown-item" href="#">GPU card</a></li>
+            <li><a class="dropdown-item" href="#">Memory</a></li>
+            <li><a class="dropdown-item" href="#">Motherboard</a></li>
+            <li><a class="dropdown-item" href="#">PC case</a></li>
+            <li><a class="dropdown-item" href="#">Storage</a></li>
+            <li><a class="dropdown-item" href="#">Cooler</a></li>
+            <li><a class="dropdown-item" href="#">OS</a></li>
+            <li><a class="dropdown-item" href="#">Power supply</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">Compare components</a>
@@ -99,12 +175,13 @@
         </li>
       </ul>
     </div>
+
   </div>
 </nav>
 
 
 <!--------------------------------------------------------------------------------------------->
-<nav th:fragment="header4" class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center fixed-top">
+<nav th:fragment="header4" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
@@ -112,13 +189,29 @@
       </svg>
       Computer components &nbsp; &nbsp;
     </a>
+
     <div class="collapse navbar-collapse" id="navbarColor04">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/list">List of components</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            List of components
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="/list">All components</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/list/cpu">CPU</a></li>
+            <li><a class="dropdown-item" href="#">GPU card</a></li>
+            <li><a class="dropdown-item" href="#">Memory</a></li>
+            <li><a class="dropdown-item" href="#">Motherboard</a></li>
+            <li><a class="dropdown-item" href="#">PC case</a></li>
+            <li><a class="dropdown-item" href="#">Storage</a></li>
+            <li><a class="dropdown-item" href="#">Cooler</a></li>
+            <li><a class="dropdown-item" href="#">OS</a></li>
+            <li><a class="dropdown-item" href="#">Power supply</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Compare components</a>
@@ -128,5 +221,6 @@
         </li>
       </ul>
     </div>
+
   </div>
 </nav>
