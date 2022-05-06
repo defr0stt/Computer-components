@@ -1,4 +1,4 @@
-package ua.lpnu.computer_components.controllers.Component;
+package ua.lpnu.computer_components.repo.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +17,9 @@ public class ComponentService {
         this.componentRepository = cpuRepository;
     }
 
-    public List<Component> getComponent(){
-        return componentRepository.findAll();
-    }
+//    public List<Component> getComponent(){
+//        return componentRepository.findAll();
+//    }
 
     public void addNewComponent(Component component) {
         Optional<Component> componentOptional = componentRepository.findComponentByName(component.getName());

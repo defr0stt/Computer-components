@@ -1,8 +1,7 @@
-package ua.lpnu.computer_components.controllers.Component;
+package ua.lpnu.computer_components.repo.component;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ua.lpnu.computer_components.models.CPU;
 import ua.lpnu.computer_components.models.Component;
 
 import java.util.List;
