@@ -7,7 +7,7 @@ let myElem = [document.getElementById('home'),
 myElem.forEach(changeActive);
 
 function changeActive(item) {
-    console.log(item.textContent + '; title = ' + title);
+    /*console.log(item.textContent + '; title = ' + title);*/
     if (item.getAttribute('class').match(condition)){
         console.log('yes = ' + item.getAttribute('class'));
         item.setAttribute('class','nav-link');

@@ -16,7 +16,7 @@ public class FaviconConfiguration {
         SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
         mapping.setOrder(Integer.MIN_VALUE);
         mapping.setUrlMap(Collections.singletonMap(
-                "/static/favicon.ico", faviconRequestHandler()));
+                "./static/favicon.ico", faviconRequestHandler()));
         return mapping;
     }
 
