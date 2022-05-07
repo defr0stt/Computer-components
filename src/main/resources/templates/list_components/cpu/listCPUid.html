@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${cpu_name}" id="List of components"></title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body>
+    <header th:insert="blocks/header :: header1"></header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="marginListText">
+        <h2 class="font-weight-bold" th:text="${cpu_name}"></h2>
+    </div>
+    <br>
+    <div class="marginListText">
+        <h4 class="font-weight-bold" th:text="${cpu.getPrice() + '$'}"></h4>
+    </div>
+    <br>
+    <br>
+    <div class="container mt-5">
+        <div class="alert alert-info mt-2" style="margin: 70px 0 0 0;padding: 10px;left: 25%;" id="table">
+                <p>
+                    <h5 th:text="${cpu.getType() + ' CPU'}" class="marginListText"></h5>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Socket :</span>
+                    <span th:text="${cpu.getSocket()}"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Base frequency :</span>
+                    <span th:text="${cpu.getBaseFrequency() + 'GHz'}"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Max frequency :</span>
+                    <span th:text="${cpu.getMaxFrequency() + 'GHz'}"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Year :</span>
+                    <span th:text="${cpu.getYear()}"></span>
+                </p>
+                <p style="margin: -160px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">GPU core :</span>
+                    <span th:text="${cpu.getGraphic}"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Cores :</span>
+                    <span th:text="${cpu.getCore()}"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Thread count :</span>
+                    <span th:text="${cpu.getThreadCount()}"></span>
+                </p>
+                <p style="margin: 17px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Max temperature :</span>
+                    <span th:text="${cpu.getMaxTemperature() + '°'}"></span>
+                </p>
+        </div>
+    </div>
+    <img id="cpu_img" th:src="@{/image/components/cpu/AMD.png}" alt="" width="520" height="390">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer th:insert="blocks/footer :: footer1"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/navbar_active.js}"></script>
+    <script type="text/javascript" th:src="@{/js/comp_img/cpu/list_cpu_img.js}"></script>
+    <script type="text/javascript" th:src="@{/js/comp_img/cpu/list_cpu_table_size.js}"></script>
+</body>
+</html>

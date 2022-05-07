@@ -20,6 +20,8 @@
             <h3 th:text="${element.getPrice()} + '$'" style="float:right;"></h3>
             <p>Base frequency :
                 <span th:text="${element.getBaseFrequency()} + 'GHz'"></span>
+                &nbsp;&nbsp;&nbsp;Type :
+                <span th:text="${element.getType()}"></span>
                 &nbsp;&nbsp;&nbsp;
                 <span th:text="'Year : ' + ${element.getYear()}"></span>
             </p>
