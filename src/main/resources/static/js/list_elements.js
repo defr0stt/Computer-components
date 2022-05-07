@@ -8,3 +8,22 @@ function changeBg(id) {
     });
 }
 
+(function() {
+    window.onresize = displayWindowSize;
+    window.onload = displayWindowSize;
+
+    function displayWindowSize() {
+        let width = window.innerWidth;
+        let elements = document.getElementById('all_elems').style;
+        if(width <= 870){
+            elements.left='15%';
+            elements.right='15%';
+        } else if(width > 870 && width < 1157){
+            elements.left='23%';
+            elements.right='23%';
+        } else {
+            elements.left = '32%';
+            elements.right='32%';
+        }
+    };
+})();
