@@ -27,6 +27,12 @@ public class CPU extends Component {
     @Column(name="cpu_temp")
     private Double maxTemperature;
 
+    @Column(name="cpu_graphic")
+    private String graphic;
+
+    @Column(name="cpu_frequency_max")
+    private Integer maxFrequency;
+
     public CPU() {
     }
 
@@ -40,7 +46,9 @@ public class CPU extends Component {
                Integer baseFrequency,
                Integer core,
                Integer threadCount,
-               Double maxTemperature) {
+               Double maxTemperature,
+               String graphic,
+               Integer maxFrequency) {
         super(id, typeOfComponent, name, price, year);
         this.type = type;
         this.socket = socket;
@@ -48,6 +56,8 @@ public class CPU extends Component {
         this.core = core;
         this.threadCount = threadCount;
         this.maxTemperature = maxTemperature;
+        this.graphic = graphic;
+        this.maxFrequency = maxFrequency;
     }
 
     public CPU(String typeOfComponent,
@@ -59,7 +69,9 @@ public class CPU extends Component {
                Integer baseFrequency,
                Integer core,
                Integer threadCount,
-               Double maxTemperature) {
+               Double maxTemperature,
+               String graphic,
+               Integer maxFrequency) {
         super(typeOfComponent, name, price, year);
         this.type = type;
         this.socket = socket;
@@ -67,6 +79,8 @@ public class CPU extends Component {
         this.core = core;
         this.threadCount = threadCount;
         this.maxTemperature = maxTemperature;
+        this.graphic = graphic;
+        this.maxFrequency = maxFrequency;
     }
 
     public String getType() {
@@ -117,6 +131,22 @@ public class CPU extends Component {
         this.maxTemperature = maxTemperature;
     }
 
+    public String getGraphic() {
+        return graphic;
+    }
+
+    public void setGraphic(String graphic) {
+        this.graphic = graphic;
+    }
+
+    public Integer getMaxFrequency() {
+        return maxFrequency;
+    }
+
+    public void setMaxFrequency(Integer maxFrequency) {
+        this.maxFrequency = maxFrequency;
+    }
+
     @Override
     public String toString() {
         return "CPU{" +
@@ -131,6 +161,8 @@ public class CPU extends Component {
                 ", core=" + core +
                 ", threadCount=" + threadCount +
                 ", maxTemperature=" + maxTemperature +
+                ", graphic=" + graphic +
+                ", maxFrequency=" + maxFrequency +
                 '}';
     }
 }

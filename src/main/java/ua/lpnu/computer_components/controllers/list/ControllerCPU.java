@@ -27,7 +27,7 @@ public class ControllerCPU {
     public String cpuList(Model model){
         Iterable<Component> cpuComponents = componentService.findComponentByType("CPU");
         model.addAttribute("cpuComponents",cpuComponents);
-        return "listCPU";
+        return "list_components/cpu/listCPU";
     }
 
     @GetMapping("/cpu/{id}")
@@ -35,12 +35,13 @@ public class ControllerCPU {
         if(!componentService.existComponent(id)){
             return "redirect:/list/cpu";
         }
+
         Optional<Component> cpu = componentService.findComponentById(id);
         ArrayList<Component> res = new ArrayList<>();
         cpu.ifPresent(res::add);
-        model.addAttribute("cpu", cpu);
+        model.addAttribute("cpu", res.get(0));
         model.addAttribute("cpu_name", res.get(0).getName());
-        return "listCPUid";
+        return "list_components/cpu/listCPUid";
     }
 
     //    AMD
