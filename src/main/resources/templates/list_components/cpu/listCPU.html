@@ -18,12 +18,12 @@
         <div th:each="element : ${cpuComponents}" class="alert alert-info mt-2">
             <h3 th:text="${element.getName()}"></h3>
             <h3 th:text="${element.getPrice()} + '$'" style="float:right;"></h3>
-            <p>Base frequency :
-                <span th:text="${element.getBaseFrequency()} + 'GHz'"></span>
+            <p>Frequency :
+                <span id="freq" th:text="${element.getBaseFrequency()} + '-' + ${element.getMaxFrequency()} + 'GHz'"></span>
                 &nbsp;&nbsp;&nbsp;Type :
-                <span th:text="${element.getType()}"></span>
-                &nbsp;&nbsp;&nbsp;
-                <span th:text="'Year : ' + ${element.getYear()}"></span>
+                <span id="type" th:text="${element.getType()}"></span>
+                &nbsp;&nbsp;&nbsp;Year :
+                <span id="year" th:text="${element.getYear()}"></span>
             </p>
             <a th:href="'/list/cpu/' + ${element.getId()}" class="btn btn-dark">More details</a>
         </div>
