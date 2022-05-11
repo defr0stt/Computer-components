@@ -3,33 +3,38 @@ function requiredName() {
     let divArray = document.getElementsByClassName('alert alert-info mt-2');
     // console.log(divArray);
     for (let i = 0; i < divArray.length; i++) {
-        if(inputField.value.length != 0){
-            let temp = divArray[i].getElementsByTagName('h3');
+        let temp = divArray[i].getElementsByTagName('h3');
+        let spanArray = divArray[i].getElementsByTagName('span');
+        if(checkCorrection(spanArray,temp[1]) && inputField.value.length != 0){
             let regExp = new RegExp('.*' + inputField.value + '.*');
             if(temp[0].innerHTML.match(regExp)){
-                console.log(temp[0].innerHTML);
-                divArray[i].style.display = 'block';
+                if(checkCorrection(spanArray)){
+                    divArray[i].style.display = 'block';
+                }
             } else {
                 divArray[i].style.display = 'none';
             }
-        } else {
+        } else if(checkCorrection(spanArray,temp[1])){
             divArray[i].style.display = 'block';
+        } else {
+            divArray[i].style.display = 'none';
         }
     }
 }
 
-// let $sliderMinYear = $('#yearMin');
-// let $sliderMaxYear = $('#yearMax');
-
-// $sliderMinYear.on('change', function() {
-//     document.getElementById('yearMinSpan').innerHTML = $sliderMinYear.val();
-// });
-//
-// $sliderMaxYear.on('change', function() {
-//     document.getElementById('yearMaxSpan').innerHTML = $sliderMaxYear.val();
-// });
-
 function changeSliderValue(id,spanId){
     const slider = document.getElementById(id);
     document.getElementById(spanId).innerHTML = slider.value;
+    return slider.value;
+}
+
+function checkCorrection(componentInformation, componentPrice){
+    if(changeSliderValue('yearMax','yearMaxSpan') - changeSliderValue('yearMin','yearMinSpan')>=0){
+        let temp_freq = componentInformation[2].innerHTML.substr(0,4);
+        if(temp_freq>=changeSliderValue('yearMin','yearMinSpan') &&
+            temp_freq<=changeSliderValue('yearMax','yearMaxSpan')){
+            return true;
+        }
+    }
+    return false;
 }

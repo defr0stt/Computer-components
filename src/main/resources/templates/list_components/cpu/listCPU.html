@@ -19,13 +19,7 @@
             <button class="btn btn-outline-secondary" type="button" onclick="requiredName()">Find</button>
         </div>
     </div>
-<!--    <div id="yearRange">-->
-<!--        <input type="range" class="custom-range" min="2015" max="2022" id="yearMin">-->
-<!--        <br>-->
-<!--        <input type="range" class="custom-range" min="2015" max="2022" id="yearMax">-->
-<!--        <span class="font-weight-bold text-primary ml-2 valueSpan2">2015</span>-->
-<!--    </div>-->
-<!--    <input type="range" class="custom-range" min="2014" max="2022" id="customRange2">-->
+
     <div class="container mt-5">
         <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Year</h5>
         <div class="row">
@@ -44,11 +38,6 @@
 <!--            </div>-->
         </div>
     </div>
-    <div class="container mt-5">
-        <div class="row">
-
-        </div>
-    </div>
 
     <div class="container mt-5">
         <!--цикл для виводу інформації про кожну з статей-->
@@ -56,11 +45,11 @@
             <h3 th:text="${element.getName()}"></h3>
             <h3 th:text="${element.getPrice()} + '$'" style="float:right;"></h3>
             <p>Frequency :
-                <span id="freq" th:text="${element.getBaseFrequency()} + '-' + ${element.getMaxFrequency()} + 'GHz'"></span>
+                <span th:text="${element.getBaseFrequency()} + 'GHz'"></span>
                 &nbsp;&nbsp;&nbsp;Type :
-                <span id="type" th:text="${element.getType()}"></span>
+                <span th:text="${element.getType()}"></span>
                 &nbsp;&nbsp;&nbsp;Year :
-                <span id="year" th:text="${element.getYear()}"></span>
+                <span th:text="${element.getYear()}"></span>
             </p>
             <a th:href="'/list/cpu/' + ${element.getId()}" class="btn btn-dark">More details</a>
         </div>
