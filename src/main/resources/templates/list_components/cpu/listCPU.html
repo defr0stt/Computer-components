@@ -30,12 +30,43 @@
                 </div>
             </div>
             <br>
-<!--            <div class="col-md-6">-->
+            <div class="range-field">
+                <input type="range" min="2015" max="2022" th:value="2022" id="yearMax" onchange="changeSliderValue('yearMax','yearMaxSpan')"/>
+                <span id="yearMaxSpan">2022</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin: -75px 0 0 26%;" id="freq">
+        <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Frequency</h5>
+        <div class="row">
+            <div class="col-md-6">
                 <div class="range-field">
-                    <input type="range" min="2015" max="2022" th:value="2022" id="yearMax" onchange="changeSliderValue('yearMax','yearMaxSpan')"/>
-                    <span id="yearMaxSpan">2022</span>
+                    <input type="range" th:step="100" min="1900" max="4100" th:value="1900" id="freqMin" onchange="changeSliderValue('freqMin','freqMinSpan')">
+                    <span id="freqMinSpan">1900</span>
                 </div>
-<!--            </div>-->
+            </div>
+            <br>
+            <div class="range-field">
+                <input type="range" th:step="100" min="1900" max="4100" th:value="4100" id="freqMax" onchange="changeSliderValue('freqMax','freqMaxSpan')"/>
+                <span id="freqMaxSpan">4100</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin: -80px 0 0 47%;" id="type">
+        <h5>&nbsp;&nbsp;&nbsp;&nbsp;Type</h5>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkedDesktop" checked>
+            <label class="form-check-label" for="checkedDesktop">
+                Desktop
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkedLaptop" checked>
+            <label class="form-check-label" for="checkedLaptop">
+                Laptop
+            </label>
         </div>
     </div>
 

@@ -28,13 +28,65 @@ function changeSliderValue(id,spanId){
     return slider.value;
 }
 
+function checkBoxValue(id) {
+    const check = document.getElementById(id);
+    return check.checked;
+}
+
 function checkCorrection(componentInformation, componentPrice){
     if(changeSliderValue('yearMax','yearMaxSpan') - changeSliderValue('yearMin','yearMinSpan')>=0){
-        let temp_freq = componentInformation[2].innerHTML.substr(0,4);
-        if(temp_freq>=changeSliderValue('yearMin','yearMinSpan') &&
-            temp_freq<=changeSliderValue('yearMax','yearMaxSpan')){
+        let temp_year = componentInformation[2].innerHTML.substr(0,4);
+        if(!(temp_year>=changeSliderValue('yearMin','yearMinSpan') &&
+            temp_year<=changeSliderValue('yearMax','yearMaxSpan'))){
+            return false;
+        }
+    } else {
+        return false;
+    }
+    if(changeSliderValue('freqMax','freqMaxSpan') - changeSliderValue('freqMin','freqMinSpan')>=0){
+        let temp_freq = componentInformation[0].innerHTML.substr(0,4);
+        if(!(temp_freq>=changeSliderValue('freqMin','freqMinSpan') &&
+            temp_freq<=changeSliderValue('freqMax','freqMaxSpan'))){
+            return false;
+        }
+    } else {
+        return false;
+    }
+    if(!(checkBoxValue('checkedDesktop') && checkBoxValue('checkedLaptop'))){
+        if (checkBoxValue('checkedDesktop') && componentInformation[1].innerHTML == 'Desktop'){
+            return true;
+        } else if (checkBoxValue('checkedLaptop') && componentInformation[1].innerHTML == 'Laptop'){
             return true;
         }
+        return false;
     }
-    return false;
+    return true;
 }
+
+(function() {
+    window.onresize = displayWindowSize;
+    window.onload = displayWindowSize;
+
+    function displayWindowSize() {
+        let width = window.innerWidth;
+        console.log(width);
+         let element = document.getElementById('freq');
+         let check = document.getElementById('type');
+        if(width <= 994){
+            if(width <= 575){
+                check.style.margin = '';
+                check.className = 'container mt-5';
+            } else {
+                check.style.margin = '-80px 0 0 47%';
+                check.className = '';
+            }
+            element.style.margin = '';
+            element.className = 'container mt-5';
+        } else {
+            check.style.margin = '-80px 0 0 47%';
+            check.className = '';
+            element.style.margin = '-75px 0 0 26%';
+            element.className='';
+        }
+    };
+})();
