@@ -54,6 +54,23 @@
         </div>
     </div>
 
+    <div id="price" style="width: 60%;">
+        <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="range-field">
+                    <input type="range" th:step="50" min="200" max="2000" th:value="200" id="priceMin" onchange="changeSliderValue('priceMin','priceMinSpan')">
+                    <span id="priceMinSpan">200</span>
+                </div>
+            </div>
+            <br>
+            <div class="range-field">
+                <input type="range" th:step="50" min="200" max="2000" th:value="2000" id="priceMax" onchange="changeSliderValue('priceMax','priceMaxSpan')"/>
+                <span id="priceMaxSpan">2000</span>
+            </div>
+        </div>
+    </div>
+
     <div id="type">
         <h5>&nbsp;&nbsp;&nbsp;&nbsp;Type</h5>
         <div class="form-check">
@@ -68,6 +85,10 @@
                 Laptop
             </label>
         </div>
+    </div>
+
+    <div id="resultSet" style="display: none;text-align: center;margin-top: 60px; margin-left: auto;margin-right: auto;">
+        <h4>No results yet</h4>
     </div>
 
     <div class="container mt-5">
@@ -85,6 +106,9 @@
             <a th:href="'/list/cpu/' + ${element.getId()}" class="btn btn-dark">More details</a>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>
