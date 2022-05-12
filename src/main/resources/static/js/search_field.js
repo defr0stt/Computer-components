@@ -69,7 +69,6 @@ function checkCorrection(componentInformation, componentPrice){
 
     function displayWindowSize() {
         let width = window.innerWidth;
-        console.log(width);
          let element = document.getElementById('freq');
          let check = document.getElementById('type');
         if(width <= 994){
@@ -77,13 +76,15 @@ function checkCorrection(componentInformation, componentPrice){
                 check.style.margin = '';
                 check.className = 'container mt-5';
             } else {
-                check.style.margin = '-80px 0 0 47%';
+                check.style.margin = '-80px 0 0 45%';
                 check.className = '';
             }
             element.style.margin = '';
             element.className = 'container mt-5';
+            element.style.width = '';
         } else {
-            check.style.margin = '-80px 0 0 47%';
+            element.style.width = '60%';
+            check.style.margin = '-80px 0 0 45%';
             check.className = '';
             element.style.margin = '-75px 0 0 26%';
             element.className='';
