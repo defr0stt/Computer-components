@@ -14,12 +14,12 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/list")
-public class ControllerCPU {
+public class ControllerComponents {
 
     private final ComponentService componentService;
 
     @Autowired
-    public ControllerCPU(ComponentService componentService) {
+    public ControllerComponents(ComponentService componentService) {
         this.componentService = componentService;
     }
 
