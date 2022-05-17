@@ -18,4 +18,8 @@ public class ControllerUsers {
         return "login_page";
     }
 
+    @GetMapping("/profile")
+    public String profile(){
+        return "personal_logout_page";
+    }
 }
