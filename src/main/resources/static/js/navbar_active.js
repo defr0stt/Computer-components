@@ -22,6 +22,22 @@ function changeActive(item) {
             item.setAttribute('class','nav-link dropdown-toggle active');
         } else {
             item.setAttribute('class','nav-link active');
+            if (temp === 'Profile'){
+                if(document.getElementById('user_out') != null){
+                    sessionStorage.setItem('status','logged');
+                } else {
+                    sessionStorage.setItem('status','anonymous');
+                }
+                console.log(sessionStorage.getItem('status'));
+            }
         }
     }
+}
+
+if(sessionStorage.getItem('status') !== undefined) {
+    if (sessionStorage.getItem('status') === 'logged') {
+        document.getElementById('log_page').setAttribute('href','/profile');
+        } else {
+        document.getElementById('log_page').setAttribute('href','/login');
+        }
 }
