@@ -1,4 +1,4 @@
-package ua.lpnu.computer_components.controllers.home;
+package ua.lpnu.computer_components.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

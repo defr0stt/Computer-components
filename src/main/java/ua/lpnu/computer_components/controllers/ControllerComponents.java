@@ -1,4 +1,4 @@
-package ua.lpnu.computer_components.controllers.list;
+package ua.lpnu.computer_components.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
