@@ -20,27 +20,27 @@
 <br>
 <br>
 <br>
-<form method="POST" th:action="@{/register}" style="margin: 20px auto; text-align: center;">
-    <div>
-        <input type="text" name="username" id="uname" class="form-control form-control-lg"
-               placeholder="Enter your username"
-               style="width: 30%;min-width: 150px;margin-left: auto;margin-right: auto;text-align: center" />
-        <label class="form-label" for="uname" required="" autofocus="">Username</label>
-        <br>
-        <br>
-        <input type="password" name="password" id="upass" class="form-control form-control-lg"
-        placeholder="Enter password"
-               style="width: 30%;min-width: 150px;margin-left: auto;margin-right: auto;text-align: center"/>
-        <label class="form-label" for="upass" required="" autofocus="">Password</label>
-        <br>
-        <br>
-        <button class="btn btn-dark"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;"
-                type="submit">Register
-        </button>
+<form action="#" th:action="@{/registration}" th:object="${userData}" method="post" style="margin: 20px auto; text-align: center;">
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}"
+         style="width: 30%; min-width: 200px;margin-right: auto; margin-left: auto; text-align: center;A">
+        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
     </div>
+    <div class="marginListText" style="width: 30%; min-width: 200px;">
+        <input type="text" id="u_name" class="form-control"  th:field="*{username}" placeholder="First Name" th:errorclass="is-invalid">
+        <label class="form-label" for="u_name" required="" autofocus="">Username</label>
+    </div>
+    <br>
+    <div class="marginListText" style="width: 30%; min-width: 200px;">
+        <input type="password" id="pass" class="form-control" th:field="*{password}" placeholder="Password" th:errorclass="is-invalid">
+        <label class="form-label" for="pass" required="" autofocus="">Password</label>
+    </div>
+    <br>
+    <br>
+    <button class="btn btn-dark"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;" type="submit">Register
+    </button>
 </form>
-<footer th:insert="blocks/footer :: footer1" style="margin-top: 200px;"></footer>
+<footer th:insert="blocks/footer :: footer1" style="margin-top: 170px;"></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{/js/navbar_active.js}"></script>
 </body>

@@ -41,3 +41,8 @@ if(sessionStorage.getItem('status') !== undefined) {
         document.getElementById('log_page').setAttribute('href','/login');
         }
 }
+
+const errMatch = /.*login\?error.*/
+if(window.location.href.match(errMatch)){
+    alert('Incorrect password or username');
+}
