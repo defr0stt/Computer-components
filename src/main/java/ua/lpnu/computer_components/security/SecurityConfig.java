@@ -82,7 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             details.add(
                     User.builder()
                             .username(userEntity.getUsername())
-                            .password(passwordEncoder.encode(userEntity.getPassword()))
+                            .password(userEntity.getPassword())
                             .roles(USER.name())
                             .build());
         }
