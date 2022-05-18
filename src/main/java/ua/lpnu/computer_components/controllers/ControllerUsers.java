@@ -1,20 +1,22 @@
 package ua.lpnu.computer_components.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import ua.lpnu.computer_components.repo.user.UserAlreadyExistException;
+import ua.lpnu.computer_components.repo.user.UserData;
 import ua.lpnu.computer_components.repo.user.UserService;
+
+import javax.validation.Valid;
+
 
 @Controller
 public class ControllerUsers {
 
-    private final UserService userService;
-
     @Autowired
-    public ControllerUsers(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     // showing favicon for logged account
     @RequestMapping("favicon.ico")
@@ -32,22 +34,26 @@ public class ControllerUsers {
     }
 
     @GetMapping("/registration")
-    public String regStart(){
-        System.out.println("regStart");
+    public String register(final Model model){
+        model.addAttribute("userData",new UserData());
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String regFin(@PathVariable(value = "username") String  username,
-                         @PathVariable(value = "password") String password){
-        if(userService.loadUserByUsername(username) != null){
-            return "redirect:/home";
+    public String userRegistration(final @Valid UserData userData, final BindingResult bindingResult, final Model model){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("registrationForm", userData);
+            return "registration";
         }
-        System.out.println(username + " = " + password);
-        User user = new User(username,password,true,
-                false,false,false,null);
-        userService.createUser(user);
-
-        return "redirect:/login";
+        try {
+            userService.register(userData);
+        }catch (UserAlreadyExistException e){
+            bindingResult.rejectValue("username", "userData.username",
+                    "An account already exists for this username.");
+            model.addAttribute("registrationForm", userData);
+            return "registration";
+        }
+        return "home";
     }
+
 }
