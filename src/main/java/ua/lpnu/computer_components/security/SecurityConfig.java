@@ -1,8 +1,10 @@
 package ua.lpnu.computer_components.security;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -61,36 +63,57 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .logoutSuccessUrl("/login");
     }
 
-    @Override
-    @Bean
-    protected UserDetailsService userDetailsService() {
-        UserDetails user =  User.builder()
-                .username("user")
-                .password(passwordEncoder.encode("user"))
-                .roles(USER.name())
-                .build();
+    private static List<UserDetails> details;
 
-        UserDetails admin =  User.builder()
+    public static List<UserDetails> getDetails() {
+        return details;
+    }
+
+    @Bean
+    public InMemoryUserDetailsManager getInMemoryUserDetailsManager(){
+        details = new ArrayList<>();
+        details.add(User.builder()
                 .username("admin")
                 .password(passwordEncoder.encode("admin"))
                 .roles(ADMIN.name())
-                .build();
-
+                .build());
         List<UserEntity> userEntities = userService.getAllUsers();
-        List<UserDetails> details = new ArrayList<>();
         for(UserEntity userEntity : userEntities){
             details.add(
                     User.builder()
                             .username(userEntity.getUsername())
-                            .password(userEntity.getPassword())
+                            .password(passwordEncoder.encode(userEntity.getPassword()))
                             .roles(USER.name())
                             .build());
         }
-        details.add(user);
-        details.add(admin);
-
-        return new InMemoryUserDetailsManager(
-                details
-        );
+        System.out.println(details);
+        return new InMemoryUserDetailsManager(details);
     }
+
+//    @Override
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//
+//        UserDetails admin =  User.builder()
+//                .username("admin")
+//                .password(passwordEncoder.encode("admin"))
+//                .roles(ADMIN.name())
+//                .build();
+//
+//        List<UserEntity> userEntities = userService.getAllUsers();
+//        details = new ArrayList<>();
+//        for(UserEntity userEntity : userEntities){
+//            details.add(
+//                    User.builder()
+//                            .username(userEntity.getUsername())
+//                            .password(userEntity.getPassword())
+//                            .roles(USER.name())
+//                            .build());
+//        }
+//        details.add(admin);
+//        System.out.println(details);
+//        return new InMemoryUserDetailsManager(
+//                details
+//        );
+//    }
 }

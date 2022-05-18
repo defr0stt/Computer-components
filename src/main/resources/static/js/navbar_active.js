@@ -34,6 +34,8 @@ function changeActive(item) {
     }
 }
 
+/*---------------Profile page--------------------*/
+
 if(sessionStorage.getItem('status') !== undefined) {
     if (sessionStorage.getItem('status') === 'logged') {
         document.getElementById('log_page').setAttribute('href','/profile');
@@ -45,4 +47,13 @@ if(sessionStorage.getItem('status') !== undefined) {
 const errMatch = /.*login\?error.*/
 if(window.location.href.match(errMatch)){
     alert('Incorrect password or username');
+}
+const prof = /.*profile.*/
+if(window.location.href.match(prof)){
+    const role = document.getElementById('basic-addon4')
+    if(document.getElementById('basic-addon2').innerHTML === 'admin'){
+        role.innerHTML = 'ADMIN';
+    } else {
+        role.innerHTML = 'USER';
+    }
 }

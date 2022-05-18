@@ -19,6 +19,31 @@
 </div>
 <br>
 <br>
+<div class="marginListText">
+    <h4 th:text="'Hello, ' + ${u_name} + '. Have a nice day)'"></h4>
+</div>
+<br>
+<br>
+<div>
+    <span class="input-group-text" id="basic-addon1" style="width: 20%;margin-left: auto;
+          margin-right: auto; text-align: center;font-weight: bold;
+          display:block; min-width: 200px; font-weight: bold;">Username</span>
+    <span class="input-group-text" id="basic-addon2"
+          style="background: white; width: 20%;margin-left: auto;
+          margin-right: auto; text-align: center; display:block;
+          min-width: 200px;" th:text="${u_name}"></span>
+</div>
+<br>
+<div>
+    <span class="input-group-text" id="basic-addon3"
+          style="width: 20%;margin-left: auto;
+          margin-right: auto; text-align: center;font-weight: bold;
+          display:block; min-width: 200px;">Role</span>
+    <span class="input-group-text" id="basic-addon4"
+          style="background: white; width: 20%;margin-left: auto;
+          margin-right: auto; text-align: center; display:block;
+          min-width: 200px;"></span>
+</div>
 <br>
 <br>
     <form method="GET" th:action="@{/logout}" id="user_out" style="margin: 20px auto; text-align: center;">
