@@ -12,10 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.lpnu.computer_components.models.UserEntity;
-import ua.lpnu.computer_components.repo.user.UserAlreadyExistException;
-import ua.lpnu.computer_components.repo.user.UserData;
-import ua.lpnu.computer_components.repo.user.UserRepository;
-import ua.lpnu.computer_components.repo.user.UserService;
+import ua.lpnu.computer_components.repo.user.*;
 import ua.lpnu.computer_components.security.SecurityConfig;
 
 import javax.validation.Valid;
@@ -30,6 +27,7 @@ public class ControllerUsers {
     private InMemoryUserDetailsManager inMemoryUserDetailsManager;
     private UserService userService;
     private PasswordEncoder passwordEncoder;
+    private DefaultUserService defaultUserService;
 
 
     // showing favicon for logged account
@@ -51,6 +49,18 @@ public class ControllerUsers {
         } else {
             username = principal.toString();
         }
+        System.out.println(username);
+        UserEntity user = defaultUserService.getUser(username);
+        model.addAttribute("u_email",username);
+        if(user == null){
+            username = "admin";
+        } else {
+            username = user.getUsername();
+            String date = user.getRegisterDate().getDayOfMonth() + "-" + user.getRegisterDate().getMonthValue() +
+                    "-" + user.getRegisterDate().getYear() + " " + user.getRegisterDate().getHour() +
+                    ":" + user.getRegisterDate().getMinute() + ":" + user.getRegisterDate().getSecond();
+            model.addAttribute("u_date", date);
+        }
         model.addAttribute("u_name",username);
         return "personal_logout_page";
     }
@@ -70,18 +80,18 @@ public class ControllerUsers {
         try {
             userService.register(userData);
         }catch (UserAlreadyExistException e){
-            bindingResult.rejectValue("username", "userData.username",
-                    "An account already exists for this username or " +
-                    "password or username is too short (less than 6 characters)");
+            bindingResult.rejectValue("email", "userData.email",
+                    "An account already exists for this email or " +
+                    "password or username is too short");
             model.addAttribute("registrationForm", userData);
             return "registration";
         }
         inMemoryUserDetailsManager.createUser(User
-                .withUsername(userData.getUsername())
+                .builder()
+                .username(userData.getEmail())
                 .password(passwordEncoder.encode(userData.getPassword()))
                 .roles(USER.name())
                 .build());
         return "redirect:/login";
     }
-
 }

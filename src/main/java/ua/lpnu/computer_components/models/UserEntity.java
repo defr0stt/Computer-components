@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user_details")
@@ -15,11 +17,18 @@ public class UserEntity {
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
+    @Email(message = "Please provide a valid email")
+    private String email;
+
+    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private LocalDateTime registerDate;
 
     public UserEntity() {
     }

@@ -10,6 +10,9 @@ import java.io.Serializable;
 @Setter
 public class UserData implements Serializable {
 
+    @NotEmpty(message = "Email can not be empty")
+    private String email;
+
     @NotEmpty(message = "Username can not be empty")
     private String username;
 

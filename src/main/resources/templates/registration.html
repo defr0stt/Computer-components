@@ -35,13 +35,18 @@
                 <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
             </div>
             <div class="marginListText" style="width: 30%; min-width: 250px;">
-                <input type="text" id="us_name" class="form-control"  th:field="*{username}" placeholder="First Name" th:errorclass="is-invalid">
-                <label class="form-label" for="us_name" required="" autofocus="">Username</label>
+                <input type="email" id="us_mail" class="form-control"  th:field="*{email}" placeholder="Enter your email" th:errorclass="is-invalid">
+                <label class="form-label" for="us_mail" required="" autofocus="" style="float: left;">Email</label>
             </div>
             <br>
             <div class="marginListText" style="width: 30%; min-width: 250px;">
-                <input type="password" id="pass" class="form-control" th:field="*{password}" placeholder="Password" th:errorclass="is-invalid">
-                <label class="form-label" for="pass" required="" autofocus="">Password</label>
+                <input type="text" id="us_name" class="form-control"  th:field="*{username}" placeholder="Enter your username" th:errorclass="is-invalid">
+                <label class="form-label" for="us_name" required="" autofocus="" style="float: left;">Username</label>
+            </div>
+            <br>
+            <div class="marginListText" style="width: 30%; min-width: 250px;">
+                <input type="password" id="pass" class="form-control" th:field="*{password}" placeholder="Enter your password" th:errorclass="is-invalid">
+                <label class="form-label" for="pass" required="" autofocus="" style="float: left;">Password</label>
             </div>
             <br>
             <br>
@@ -55,7 +60,7 @@
     <br>
     <br>
     <br>
-<footer th:insert="blocks/footer :: footer1" style="margin-top: 170px;"></footer>
+<footer th:insert="blocks/footer :: footer1" style="margin-top: 100px;"></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{/js/navbar_active.js}"></script>
 </body>

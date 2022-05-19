@@ -68,12 +68,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static List<UserDetails> getDetails() {
         return details;
     }
-
     @Bean
     public InMemoryUserDetailsManager getInMemoryUserDetailsManager(){
         details = new ArrayList<>();
         details.add(User.builder()
-                .username("admin")
+                .username("admin@gmail.com")
                 .password(passwordEncoder.encode("admin"))
                 .roles(ADMIN.name())
                 .build());
@@ -81,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         for(UserEntity userEntity : userEntities){
             details.add(
                     User.builder()
-                            .username(userEntity.getUsername())
+                            .username(userEntity.getEmail())
                             .password(userEntity.getPassword())
                             .roles(USER.name())
                             .build());

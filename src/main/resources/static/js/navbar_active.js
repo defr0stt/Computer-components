@@ -50,9 +50,10 @@ if(window.location.href.match(errMatch)){
 }
 const prof = /.*profile.*/
 if(window.location.href.match(prof)){
-    const role = document.getElementById('basic-addon4')
+    const role = document.getElementById('basic-addon6')
     if(document.getElementById('basic-addon2').innerHTML === 'admin'){
         role.innerHTML = 'ADMIN';
+        document.getElementById('userDate').style.display = 'none';
     } else {
         role.innerHTML = 'USER';
     }
