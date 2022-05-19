@@ -15,6 +15,7 @@ import ua.lpnu.computer_components.models.UserEntity;
 import ua.lpnu.computer_components.repo.user.*;
 import ua.lpnu.computer_components.security.SecurityConfig;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import static ua.lpnu.computer_components.security.ApplicationRole.USER;
@@ -93,5 +94,37 @@ public class ControllerUsers {
                 .roles(USER.name())
                 .build());
         return "redirect:/login";
+    }
+
+    @GetMapping("/recover")
+    public String recoverPage(){
+        return "forgot_password";
+    }
+
+    @PostMapping("/recover")
+    public String recoverProcess(final @Valid UserData userData, final BindingResult bindingResult){
+        String[] pass = {"qwerty","qwerty1122","123456","12345678","123456789","1234567890","abc12345","webweb","username"};
+        if(bindingResult.hasErrors()){
+            return "forgot_password";
+        }
+        if(userService.checkIfUserExist(userData.getEmail())){
+            UserEntity userEntity = defaultUserService.getUser(userData.getEmail());
+            String password = "";
+            for(String s : pass){
+                if(passwordEncoder.matches(s,userEntity.getPassword())){
+                    password = s;
+                    break;
+                }
+            }
+            try {
+                defaultUserService.recoverPassword(userEntity.getEmail(), userEntity.getUsername(),
+                        password);
+                return "redirect:/login";
+            } catch (Exception e){
+                return "redirect:/forgot_password";
+            }
+        } else {
+            return "forgot_password";
+        }
     }
 }
