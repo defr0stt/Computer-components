@@ -85,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             .roles(USER.name())
                             .build());
         }
-        System.out.println(details);
+//        System.out.println(details);
         return new InMemoryUserDetailsManager(details);
     }
 

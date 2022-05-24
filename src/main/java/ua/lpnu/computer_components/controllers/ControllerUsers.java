@@ -12,11 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.lpnu.computer_components.models.UserEntity;
+import ua.lpnu.computer_components.password.PasswordReader;
 import ua.lpnu.computer_components.repo.user.*;
 import ua.lpnu.computer_components.security.SecurityConfig;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
+
+import java.util.List;
 
 import static ua.lpnu.computer_components.security.ApplicationRole.USER;
 
@@ -93,6 +96,7 @@ public class ControllerUsers {
                 .password(passwordEncoder.encode(userData.getPassword()))
                 .roles(USER.name())
                 .build());
+        PasswordReader.writeInFile(userData.getPassword());
         return "redirect:/login";
     }
 
@@ -103,14 +107,15 @@ public class ControllerUsers {
 
     @PostMapping("/recover")
     public String recoverProcess(final @Valid UserData userData, final BindingResult bindingResult){
-        String[] pass = {"qwerty","qwerty1122","123456","12345678","123456789","1234567890","abc12345","webweb","username"};
         if(bindingResult.hasErrors()){
             return "forgot_password";
         }
         if(userService.checkIfUserExist(userData.getEmail())){
             UserEntity userEntity = defaultUserService.getUser(userData.getEmail());
             String password = "";
-            for(String s : pass){
+            PasswordReader.checkIfExists("");
+            List<String> temp = PasswordReader.getPasswords();
+            for(String s:temp){
                 if(passwordEncoder.matches(s,userEntity.getPassword())){
                     password = s;
                     break;
