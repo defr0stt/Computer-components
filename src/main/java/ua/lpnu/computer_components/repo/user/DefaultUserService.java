@@ -2,15 +2,14 @@ package ua.lpnu.computer_components.repo.user;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.lpnu.computer_components.email.EmailSender;
 import ua.lpnu.computer_components.models.UserEntity;
-import ua.lpnu.computer_components.security.SecurityConfig;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service("userService")
 @AllArgsConstructor
@@ -38,8 +37,20 @@ public class DefaultUserService implements UserService {
         return userRepository.findByEmail(email) != null;
     }
 
+    public boolean checkIfUserExist(Long id) {
+        return userRepository.findById(id) != null;
+    }
+
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
+
     public UserEntity getUser(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public Optional<UserEntity> getUser(Long id) {
+        return userRepository.findById(id);
     }
 
     public List<UserEntity> getAllUsers(){

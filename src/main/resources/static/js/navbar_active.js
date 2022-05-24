@@ -61,7 +61,12 @@ if(window.location.href.match(prof)){
     if(document.getElementById('basic-addon2').innerHTML === 'admin'){
         role.innerHTML = 'ADMIN';
         document.getElementById('userDate').style.display = 'none';
+        document.getElementById('all_users').style.display = 'block';
     } else {
         role.innerHTML = 'USER';
     }
+}
+
+if(window.location.href.match(/.*all_users.*/)){
+    document.getElementById('log_page').setAttribute('href','/profile');
 }

@@ -21,6 +21,7 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import java.util.List;
+import java.util.Optional;
 
 import static ua.lpnu.computer_components.security.ApplicationRole.USER;
 
@@ -136,5 +137,22 @@ public class ControllerUsers {
                     "There is no account for this email");
             return "forgot_password";
         }
+    }
+
+    @GetMapping("/all_users")
+    public String allUsersInfo(Model model){
+        List<UserEntity> userEntities = defaultUserService.getAllUsers();
+        model.addAttribute("allUsers",userEntities);
+        return "all_users";
+    }
+
+    // Deleting a person
+    @PostMapping("/all_users/{id}")
+    public String usersDelete(@PathVariable("id") Long id){
+        if(defaultUserService.checkIfUserExist(id)){
+            defaultUserService.deleteUser(id);
+            return "redirect:/all_users";
+        }
+        return "redirect:/home";
     }
 }
