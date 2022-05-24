@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Controller;
@@ -101,13 +102,15 @@ public class ControllerUsers {
     }
 
     @GetMapping("/recover")
-    public String recoverPage(){
+    public String recoverPage(Model model){
+        model.addAttribute("userData",new UserData());
         return "forgot_password";
     }
 
     @PostMapping("/recover")
-    public String recoverProcess(final @Valid UserData userData, final BindingResult bindingResult){
+    public String recoverProcess(final @Valid UserData userData, final BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
+            model.addAttribute("recoverForm", userData);
             return "forgot_password";
         }
         if(userService.checkIfUserExist(userData.getEmail())){
@@ -129,6 +132,8 @@ public class ControllerUsers {
                 return "redirect:/forgot_password";
             }
         } else {
+            bindingResult.rejectValue("email", "userData.email",
+                    "There is no account for this email");
             return "forgot_password";
         }
     }

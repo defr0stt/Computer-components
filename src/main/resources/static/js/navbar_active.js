@@ -34,6 +34,15 @@ function changeActive(item) {
     }
 }
 
+/*---------------Error--------------------*/
+
+const errMatch = /.*login\?error.*/
+if(window.location.href.match(errMatch)){
+    document.getElementById('alert_err').style.display = 'block';
+} else {
+    document.getElementById('alert_err').style.display = 'none';
+}
+
 /*---------------Profile page--------------------*/
 
 if(sessionStorage.getItem('status') !== undefined) {
@@ -44,10 +53,6 @@ if(sessionStorage.getItem('status') !== undefined) {
         }
 }
 
-const errMatch = /.*login\?error.*/
-if(window.location.href.match(errMatch)){
-    alert('Incorrect password or username');
-}
 const prof = /.*profile.*/
 if(window.location.href.match(prof)){
     const role = document.getElementById('basic-addon6')
