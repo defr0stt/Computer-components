@@ -37,10 +37,12 @@ function changeActive(item) {
 /*---------------Error--------------------*/
 
 const errMatch = /.*login\?error.*/
-if(window.location.href.match(errMatch)){
-    document.getElementById('alert_err').style.display = 'block';
-} else {
-    document.getElementById('alert_err').style.display = 'none';
+if(document.getElementById('alert_err') != undefined){
+    if(window.location.href.match(errMatch)){
+        document.getElementById('alert_err').style.display = 'block';
+    } else {
+        document.getElementById('alert_err').style.display = 'none';
+    }
 }
 
 /*---------------Profile page--------------------*/
