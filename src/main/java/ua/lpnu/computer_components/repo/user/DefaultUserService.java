@@ -53,6 +53,10 @@ public class DefaultUserService implements UserService {
         return userRepository.findById(id);
     }
 
+    public void updatePassword(String email, String password) {
+        userRepository.updatePassword(email, password);
+    }
+
     public List<UserEntity> getAllUsers(){
         return userRepository.findAll();
     }

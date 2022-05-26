@@ -155,4 +155,34 @@ public class ControllerUsers {
         }
         return "redirect:/home";
     }
+
+    @GetMapping("/change_password")
+    public String changePassword(Model model){
+        model.addAttribute("userData",new UserData());
+        return "change_password";
+    }
+
+    @PostMapping("/change_password")
+    public String changePasswordPost(final @Valid UserData userData, final BindingResult bindingResult, Model model){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(userData.getPassword().length() < 6){
+            bindingResult.rejectValue("password", "userData.password",
+                    "This password is too short");
+            return "change_password";
+        }
+        String newPassword = passwordEncoder.encode(userData.getPassword());
+        String email = ((UserDetails) principal).getUsername();
+        defaultUserService.updatePassword(email,newPassword);
+
+        inMemoryUserDetailsManager.updatePassword(User
+                .builder()
+                .username((((UserDetails) principal)).getUsername())
+                .password(passwordEncoder.encode(userData.getPassword()))
+                .roles(USER.name())
+                .build(),newPassword);
+
+        PasswordReader.writeInFile(userData.getPassword());
+
+        return "redirect:/profile";
+    }
 }
