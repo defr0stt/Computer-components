@@ -62,7 +62,7 @@ if(window.location.href.match(prof)){
         role.innerHTML = 'ADMIN';
         document.getElementById('userDate').style.display = 'none';
         document.getElementById('all_users').style.display = 'block';
-        document.getElementById('change_pass').style.display = 'none';
+        document.getElementById('comp_crud').style.display = 'block';
     } else {
         role.innerHTML = 'USER';
     }
