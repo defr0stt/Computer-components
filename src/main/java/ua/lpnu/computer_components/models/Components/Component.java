@@ -1,4 +1,4 @@
-package ua.lpnu.computer_components.models;
+package ua.lpnu.computer_components.models.Components;
 
 import javax.persistence.*;
 
@@ -19,16 +19,16 @@ public abstract class Component {
     @Column(name="component_id")
     private Long id;
 
-    @Column(name="component_type")
+    @Column(nullable = false,name="component_type")
     private String typeOfComponent;
 
-    @Column(name="component_name")
+    @Column(unique = true, nullable = false, name="component_name")
     private String name;
 
-    @Column(name="component_price")
+    @Column(nullable = false,name="component_price")
     private Double price;
 
-    @Column(name="component_year")
+    @Column(nullable = false,name="component_year")
     private Integer year;
 
     public Component(Long id, String typeOfComponent, String name, Double price, Integer year) {

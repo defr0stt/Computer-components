@@ -2,7 +2,7 @@ package ua.lpnu.computer_components.repo.component;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ua.lpnu.computer_components.models.Component;
+import ua.lpnu.computer_components.models.Components.Component;
 
 import java.util.List;
 import java.util.Optional;

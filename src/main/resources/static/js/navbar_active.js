@@ -63,13 +63,16 @@ if(sessionStorage.getItem('status') !== undefined) {
 const prof = /.*profile.*/
 if(window.location.href.match(prof)){
     const role = document.getElementById('basic-addon6')
-    if(document.getElementById('basic-addon2').innerHTML === 'admin'){
-        role.innerHTML = 'ADMIN';
-        document.getElementById('userDate').style.display = 'none';
-        document.getElementById('all_users').style.display = 'block';
-        document.getElementById('comp_crud').style.display = 'block';
-        document.getElementById('change_pass').style.display = 'none';
-    } else {
-        role.innerHTML = 'USER';
+    if(document.getElementById('basic-addon2') != null){
+        if(document.getElementById('basic-addon2').innerHTML === 'admin'){
+            role.innerHTML = 'ADMIN';
+            document.getElementById('userDate').style.display = 'none';
+            document.getElementById('all_users').style.display = 'block';
+            document.getElementById('components_crud').style.display = 'block';
+            document.getElementById('change_pass').style.display = 'none';
+            document.getElementById('comp_text').style.display = 'block';
+        } else {
+            role.innerHTML = 'USER';
+        }
     }
 }

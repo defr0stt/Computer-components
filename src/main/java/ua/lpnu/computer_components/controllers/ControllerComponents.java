@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.lpnu.computer_components.repo.component.ComponentService;
-import ua.lpnu.computer_components.models.Component;
+import ua.lpnu.computer_components.models.Components.Component;
 
 import java.util.ArrayList;
 import java.util.Optional;

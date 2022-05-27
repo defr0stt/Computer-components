@@ -2,7 +2,7 @@ package ua.lpnu.computer_components.repo.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.lpnu.computer_components.models.Component;
+import ua.lpnu.computer_components.models.Components.Component;
 
 import java.util.List;
 import java.util.Optional;

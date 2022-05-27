@@ -1,7 +1,12 @@
-package ua.lpnu.computer_components.models;
+package ua.lpnu.computer_components.models.Components;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity // for hibernate
 @Table(name = "cpu_details")  // for table in DB
 @PrimaryKeyJoinColumn(name = "component_id")
@@ -80,70 +85,6 @@ public class CPU extends Component {
         this.threadCount = threadCount;
         this.maxTemperature = maxTemperature;
         this.graphic = graphic;
-        this.maxFrequency = maxFrequency;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getSocket() {
-        return socket;
-    }
-
-    public void setSocket(String socket) {
-        this.socket = socket;
-    }
-
-    public Integer getBaseFrequency() {
-        return baseFrequency;
-    }
-
-    public void setBaseFrequency(Integer baseFrequency) {
-        this.baseFrequency = baseFrequency;
-    }
-
-    public Integer getCore() {
-        return core;
-    }
-
-    public void setCore(Integer core) {
-        this.core = core;
-    }
-
-    public Integer getThreadCount() {
-        return threadCount;
-    }
-
-    public void setThreadCount(Integer threadCount) {
-        this.threadCount = threadCount;
-    }
-
-    public Double getMaxTemperature() {
-        return maxTemperature;
-    }
-
-    public void setMaxTemperature(Double maxTemperature) {
-        this.maxTemperature = maxTemperature;
-    }
-
-    public String getGraphic() {
-        return graphic;
-    }
-
-    public void setGraphic(String graphic) {
-        this.graphic = graphic;
-    }
-
-    public Integer getMaxFrequency() {
-        return maxFrequency;
-    }
-
-    public void setMaxFrequency(Integer maxFrequency) {
         this.maxFrequency = maxFrequency;
     }
 
