@@ -13,4 +13,15 @@ public class CaseData extends ComponentData {
 
     @NotEmpty(message = "Color can not be empty")
     private String color;
+
+    @Override
+    public String toString() {
+        return "Case{" +
+                "typeOfComponent='" + getTypeOfComponent() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", year='" + getYear() + '\'' +
+                ", type='" + type + '\'' +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

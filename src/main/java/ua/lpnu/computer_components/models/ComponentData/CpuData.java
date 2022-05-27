@@ -31,4 +31,22 @@ public class CpuData extends ComponentData{
 
     @NotEmpty(message = "MAX Frequency can not be empty")
     private Integer maxFrequency;
+
+    @Override
+    public String toString() {
+        return "CPU{" +
+                "typeOfComponent='" + getTypeOfComponent() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", type='" + type + '\'' +
+                ", socket='" + socket + '\'' +
+                ", price=" + getPrice() +
+                ", year=" + getYear() +
+                ", baseFrequency=" + baseFrequency +
+                ", core=" + core +
+                ", threadCount=" + threadCount +
+                ", maxTemperature=" + maxTemperature +
+                ", graphic=" + graphic +
+                ", maxFrequency=" + maxFrequency +
+                '}';
+    }
 }

@@ -11,7 +11,6 @@ public abstract class ComponentData {
     @NotEmpty(message = "Name can not be empty")
     private String name;
 
-    @NotEmpty(message = "Type of component can not be empty")
     private String typeOfComponent;
 
     @NotEmpty(message = "Price can not be empty")
