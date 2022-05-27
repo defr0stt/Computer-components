@@ -139,7 +139,7 @@ public class ControllerUsers {
         }
     }
 
-    @GetMapping("/all_users")
+    @GetMapping("/profile/all_users")
     public String allUsersInfo(Model model){
         List<UserEntity> userEntities = defaultUserService.getAllUsers();
         model.addAttribute("allUsers",userEntities);
@@ -147,27 +147,28 @@ public class ControllerUsers {
     }
 
     // Deleting a person
-    @PostMapping("/all_users/{id}")
+    @PostMapping("/profile/all_users/{id}")
     public String usersDelete(@PathVariable("id") Long id){
         if(defaultUserService.checkIfUserExist(id)){
             defaultUserService.deleteUser(id);
-            return "redirect:/all_users";
+            return "redirect:/profile/all_users";
         }
         return "redirect:/home";
     }
 
-    @GetMapping("/change_password")
+    @GetMapping("/profile/change_password")
     public String changePassword(Model model){
         model.addAttribute("userData",new UserData());
         return "change_password";
     }
 
-    @PostMapping("/change_password")
-    public String changePasswordPost(final @Valid UserData userData, final BindingResult bindingResult, Model model){
+    @PostMapping("/profile/change_password")
+    public String changePasswordPost(final @Valid UserData userData, final BindingResult bindingResult){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(userData.getPassword().length() < 6){
+        UserEntity user = defaultUserService.getUser(((UserDetails) principal).getUsername());
+        if(userData.getPassword().length() < 6 || passwordEncoder.matches(userData.getPassword(),user.getPassword())){
             bindingResult.rejectValue("password", "userData.password",
-                    "This password is too short");
+                    "This password is too short or it's similar to previous one");
             return "change_password";
         }
         String newPassword = passwordEncoder.encode(userData.getPassword());

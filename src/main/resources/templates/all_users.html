@@ -28,7 +28,7 @@
             <td th:text="${user.email}"></td>
             <td th:text="${user.getRegisterDate()}"></td>
             <td>
-                <form method="post" th:action="@{/all_users/{id}(id=${user.id})}" id="all_users" style="margin: 20px auto; text-align: center;">
+                <form method="post" th:action="@{/profile/all_users/{id}(id=${user.id})}" id="all_users" style="margin: 20px auto; text-align: center;">
                     <button class="btn btn-dark"
                             style="padding-left: 2.5rem; padding-right: 2.5rem;"
                             type="submit">Delete user

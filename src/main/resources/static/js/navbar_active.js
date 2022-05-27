@@ -47,6 +47,11 @@ if(document.getElementById('alert_err') != undefined){
 
 /*---------------Profile page--------------------*/
 
+if(window.location.href.match(/.*all_users.*/) || window.location.href.match(/.*profile.*/)){
+    sessionStorage.setItem('status','logged');
+    document.getElementById('log_page').setAttribute('href','/profile');
+}
+
 if(sessionStorage.getItem('status') !== undefined) {
     if (sessionStorage.getItem('status') === 'logged') {
         document.getElementById('log_page').setAttribute('href','/profile');
@@ -63,11 +68,8 @@ if(window.location.href.match(prof)){
         document.getElementById('userDate').style.display = 'none';
         document.getElementById('all_users').style.display = 'block';
         document.getElementById('comp_crud').style.display = 'block';
+        document.getElementById('change_pass').style.display = 'none';
     } else {
         role.innerHTML = 'USER';
     }
-}
-
-if(window.location.href.match(/.*all_users.*/)){
-    document.getElementById('log_page').setAttribute('href','/profile');
 }
