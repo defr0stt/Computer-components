@@ -44,6 +44,10 @@ public class ComponentService {
         return componentRepository.findByTypeOfComponent(type);
     }
 
+    public List<Component> getAllComponents(){
+        return componentRepository.findAll();
+    }
+
     public void deleteComponent(Long id) {
         if(componentRepository.existsById(id)){
             componentRepository.deleteById(id);
@@ -52,14 +56,10 @@ public class ComponentService {
         }
     }
 
-    public void updateComponent(Long id, String name) {
-        Component component = componentRepository.findById(id).orElseThrow(
-                () -> new IllegalStateException("Component with id=" + id + "doesn't exist"));
+    public void updateComponent(Long id, Component component) {
         if(component!=null){
-            Optional<Component> componentOptional = componentRepository.findComponentByName(name);
-            if(componentOptional.isPresent()){
-                component.setName(name);
-            }
+            componentRepository.deleteById(id);
+            componentRepository.save(component);
         }
     }
 }
