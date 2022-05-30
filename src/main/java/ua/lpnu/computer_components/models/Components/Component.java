@@ -46,6 +46,19 @@ public abstract class Component {
         this.year = year;
     }
 
+    public static Component checkMainParams(Component c1, Component c2){
+        if(!c1.getName().equals(c2.getName())){
+            c1.setName(c2.getName());
+        }
+        if(!c1.getPrice().equals(c2.getPrice())){
+            c1.setPrice(c2.getPrice());
+        }
+        if(!c1.getYear().equals(c2.getYear())){
+            c1.setYear(c2.getYear());
+        }
+        return c1;
+    }
+
     public Component(){}
 
     public Long getId() {

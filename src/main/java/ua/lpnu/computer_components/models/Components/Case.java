@@ -45,6 +45,36 @@ public class Case extends Component {
         this.color = color;
     }
 
+    public static Case checkParams(Case startCase, Case finishCase){
+        startCase = (Case) checkMainParams(startCase, finishCase);
+        if(!startCase.getType().equals(finishCase.getType())){
+            startCase.setType(finishCase.getType());
+        }
+        if(!startCase.getColor().equals(finishCase.getColor())){
+            startCase.setColor(finishCase.getColor());
+        }
+        return startCase;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Case otherCase = (Case) (obj);
+        if(this.getName().equals(otherCase.getName())){
+            if(this.getTypeOfComponent().equals(otherCase.getTypeOfComponent())){
+                if(this.getPrice().equals(otherCase.getPrice())){
+                    if(this.getYear().equals(otherCase.getYear())){
+                        if(this.getType().equals(otherCase.getType())){
+                            if(this.getColor().equals(otherCase.getColor())){
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Case{" +

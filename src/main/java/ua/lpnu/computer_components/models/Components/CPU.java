@@ -88,6 +88,66 @@ public class CPU extends Component {
         this.maxFrequency = maxFrequency;
     }
 
+    public static CPU checkParams(CPU startCpu, CPU finishCpu){
+        startCpu = (CPU) checkMainParams(startCpu, finishCpu);
+        if(!startCpu.getType().equals(finishCpu.getType())){
+            startCpu.setType(finishCpu.getType());
+        }
+        if(!startCpu.getSocket().equals(finishCpu.getSocket())){
+            startCpu.setSocket(finishCpu.getSocket());
+        }
+        if(!startCpu.getBaseFrequency().equals(finishCpu.getBaseFrequency())){
+            startCpu.setBaseFrequency(finishCpu.getBaseFrequency());
+        }
+        if(!startCpu.getCore().equals(finishCpu.getCore())){
+            startCpu.setCore(finishCpu.getCore());
+        }
+        if(!startCpu.getThreadCount().equals(finishCpu.getThreadCount())){
+            startCpu.setThreadCount(finishCpu.getThreadCount());
+        }
+        if(!startCpu.getMaxTemperature().equals(finishCpu.getMaxTemperature())){
+            startCpu.setMaxTemperature(finishCpu.getMaxTemperature());
+        }
+        if(!startCpu.getGraphic().equals(finishCpu.getGraphic())){
+            startCpu.setGraphic(finishCpu.getGraphic());
+        }
+        if(!startCpu.getMaxFrequency().equals(finishCpu.getMaxFrequency())){
+            startCpu.setMaxFrequency(finishCpu.getMaxFrequency());
+        }
+        return startCpu;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        CPU otherCpu = (CPU)(obj);
+        if(this.getName().equals(otherCpu.getName())){
+            if(this.getTypeOfComponent().equals(otherCpu.getTypeOfComponent())){
+                if(this.getPrice().equals(otherCpu.getPrice())){
+                    if(this.getYear().equals(otherCpu.getYear())){
+                        if(this.getType().equals(otherCpu.getType())){
+                            if(this.getSocket().equals(otherCpu.getSocket())){
+                                if(this.getBaseFrequency().equals(otherCpu.getBaseFrequency())){
+                                    if(this.getCore().equals(otherCpu.getCore())){
+                                        if(this.getThreadCount().equals(otherCpu.getThreadCount())){
+                                            if(this.getMaxTemperature().equals(otherCpu.getMaxTemperature())){
+                                                if(this.getMaxFrequency().equals(otherCpu.getMaxFrequency())){
+                                                    if(this.getGraphic().equals(otherCpu.getGraphic())){
+                                                        return true;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "CPU{" +

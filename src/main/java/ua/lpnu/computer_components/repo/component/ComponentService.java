@@ -2,6 +2,8 @@ package ua.lpnu.computer_components.repo.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ua.lpnu.computer_components.models.Components.CPU;
+import ua.lpnu.computer_components.models.Components.Case;
 import ua.lpnu.computer_components.models.Components.Component;
 
 import java.util.List;
@@ -58,8 +60,27 @@ public class ComponentService {
 
     public void updateComponent(Long id, Component component) {
         if(component!=null){
-            componentRepository.deleteById(id);
-            componentRepository.save(component);
+            Optional<Component> componentOptional = componentRepository.findById(id);
+            if(component.getTypeOfComponent().equals("CPU")){
+                CPU cpu = (CPU)(componentOptional.get());
+                CPU otherCpu = (CPU) component;
+                if(!cpu.equals(otherCpu)){
+                    CPU temp = CPU.checkParams(cpu,otherCpu);
+                    cpu = temp;
+                    componentRepository.deleteById(cpu.getId());
+                    componentRepository.save(cpu);
+                }
+
+            } else if (component.getTypeOfComponent().equals("Case")){
+                Case aCase = (Case)(componentOptional.get());
+                Case otherCase = (Case) component;
+                if(!aCase.equals(otherCase)){
+                    Case temp = Case.checkParams(aCase,otherCase);
+                    aCase = temp;
+                    componentRepository.deleteById(aCase.getId());
+                    componentRepository.save(aCase);
+                }
+            }
         }
     }
 }
