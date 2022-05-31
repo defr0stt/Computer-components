@@ -8,8 +8,10 @@ function requiredName() {
         let temp = divArray[i].getElementsByTagName('h3');
         let spanArray = divArray[i].getElementsByTagName('span');
         if(checkCorrection(spanArray,temp[1]) && inputField.value.length != 0){
-            let regExp = new RegExp('.*' + inputField.value + '.*');
-            if(temp[0].innerHTML.match(regExp)){
+            let regExp1 = new RegExp('.*' + inputField.value.toUpperCase() + '.*');
+            let regExp2 = new RegExp('.*' + inputField.value.toLowerCase() + '.*');
+            if(temp[0].innerHTML.toLowerCase().match(regExp2) ||
+                temp[0].innerHTML.toUpperCase().match(regExp1)){
                 if(checkCorrection(spanArray,temp[1])){
                     divArray[i].style.display = 'block';
                     counter++;
@@ -62,7 +64,7 @@ function checkCorrection(componentInformation, componentPrice){
     if (changeSliderValue('priceMax','priceMaxSpan') - changeSliderValue('priceMin','priceMinSpan') >= 0){
         let temp_price = '';
         for (let i = 0; i < componentPrice.innerHTML.length; i++) {
-            if(componentPrice.innerHTML[i] == '$'){
+            if(componentPrice.innerHTML[i] === '$' || componentPrice.innerHTML[i] === '₴'){
                 break;
             }
             temp_price += componentPrice.innerHTML[i];
@@ -94,6 +96,7 @@ function checkCorrection(componentInformation, componentPrice){
          let element = document.getElementById('freq');
          let check = document.getElementById('type');
         let price = document.getElementById('price');
+        let sortBy = document.getElementById('sortBy');
         // console.log(width);
         if(width <= 991){
             check.style.margin = '-80px 70% 0 14%';
@@ -104,6 +107,9 @@ function checkCorrection(componentInformation, componentPrice){
             element.className = '';
             price.style.margin='25px 0 0 38%';
             price.className='';
+            sortBy.className = '';
+            sortBy.style.marginTop = '-81px';
+            sortBy.style.marginLeft = '230px';
             if(width<=855){
                 check.style.margin = '-80px 70% 0 9%';
             }
@@ -116,6 +122,9 @@ function checkCorrection(componentInformation, componentPrice){
                 price.style.width = '';
                 check.className = 'container mt-5';
                 check.style.margin = '';
+                sortBy.className = 'container mt-5';
+                sortBy.style.marginTop = '';
+                sortBy.style.marginLeft = '';
             } else if(width<=767){
                 element.style.margin = '-75px 0 0 65%';
                 price.style.margin = '25px 0 0 65%';
