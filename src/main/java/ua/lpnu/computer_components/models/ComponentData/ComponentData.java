@@ -14,8 +14,8 @@ public abstract class ComponentData {
     private String typeOfComponent;
 
     @NotEmpty(message = "Price can not be empty")
-    private String price;
+    private Double price;
 
     @NotEmpty(message = "Year can not be empty")
-    private String year;
+    private Integer year;
 }

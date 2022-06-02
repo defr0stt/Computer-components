@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ua.lpnu.computer_components.models.ComponentData.CaseData;
-import ua.lpnu.computer_components.models.ComponentData.CpuData;
-import ua.lpnu.computer_components.models.Components.CPU;
-import ua.lpnu.computer_components.models.Components.Case;
-import ua.lpnu.computer_components.models.Components.Component;
+import ua.lpnu.computer_components.models.ComponentData.*;
+import ua.lpnu.computer_components.models.Components.*;
 import ua.lpnu.computer_components.repo.component.ComponentService;
 
 import javax.validation.Valid;
@@ -29,12 +26,26 @@ public class ComponentCrudController {
     public String createComp(Model model){
         model.addAttribute("case_comp",new CaseData());
         model.addAttribute("cpu",new CpuData());
+        model.addAttribute("hardware", new HardwareData());
+        model.addAttribute("cooler", new CoolerData());
+        model.addAttribute("gpu", new GpuData());
+        model.addAttribute("memory", new MemoryData());
+        model.addAttribute("motherboard", new MotherboardData());
+        model.addAttribute("os", new OsData());
+        model.addAttribute("supply", new PowerSupplyData());
         return "component_crud/create";
     }
 
     @PostMapping("/create")
     public String createCompPost(final @Valid CpuData cpuData,
-                                 final @Valid CaseData caseData){
+                                 final @Valid CaseData caseData,
+                                 final @Valid HardwareData hardwareData,
+                                 final @Valid CoolerData coolerData,
+                                 final @Valid GpuData gpuData,
+                                 final @Valid MemoryData memoryData,
+                                 final @Valid MotherboardData motherboardData,
+                                 final @Valid OsData osData,
+                                 final @Valid PowerSupplyData powerSupplyData){
 
         if(cpuData.getMaxFrequency() != null){
             cpuData.setTypeOfComponent("CPU");
@@ -43,8 +54,8 @@ public class ComponentCrudController {
                     cpuData.getName(),
                     cpuData.getType(),
                     cpuData.getSocket(),
-                    Double.parseDouble(cpuData.getPrice()),
-                    Integer.parseInt(cpuData.getYear()),
+                    cpuData.getPrice(),
+                    cpuData.getYear(),
                     cpuData.getBaseFrequency(),
                     cpuData.getCore(),
                     cpuData.getThreadCount(),
@@ -57,11 +68,87 @@ public class ComponentCrudController {
             System.out.println(caseData);
             Case caseCreation = new Case(caseData.getTypeOfComponent(),
                                          caseData.getName(),
-                    Double.parseDouble(caseData.getPrice()),
-                    Integer.parseInt(caseData.getYear()),
+                                        caseData.getPrice(),
+                                        caseData.getYear(),
                                          caseData.getType(),
                                          caseData.getColor());
             componentService.addNewComponent(caseCreation);
+        } else if(hardwareData.getDiskBufferSize() != null){
+            hardwareData.setTypeOfComponent("Hardware");
+            Hardware hardware = new Hardware(hardwareData.getTypeOfComponent(),
+                                             hardwareData.getName(),
+                                             hardwareData.getPrice(),
+                                            hardwareData.getYear(),
+                                            hardwareData.getSize(),
+                                            hardwareData.getDiskType(),
+                                            hardwareData.getConnection(),
+                                            hardwareData.getDiskBufferSize());
+            componentService.addNewComponent(hardware);
+        } else if(coolerData.getTdp() != null){
+            coolerData.setTypeOfComponent("Cooler");
+            Cooler cooler = new Cooler(coolerData.getTypeOfComponent(),
+                    coolerData.getName(),
+                    coolerData.getPrice(),
+                    coolerData.getYear(),
+                    coolerData.getType(),
+                    coolerData.getTdp(),
+                    coolerData.getSocket(),
+                    coolerData.getSpeedBase(),
+                    coolerData.getSpeedMax());
+            componentService.addNewComponent(cooler);
+        } else if(gpuData.getResolutionMax() != null){
+            gpuData.setTypeOfComponent("GPU");
+            GPU gpu = new GPU(gpuData.getTypeOfComponent(),
+                    gpuData.getName(),
+                    gpuData.getPrice(),
+                    gpuData.getYear(),
+                    gpuData.getChipName(),
+                    gpuData.getMemoryType(),
+                    gpuData.getMemorySize(),
+                    gpuData.getCoolingSys(),
+                    gpuData.getFrequency(),
+                    gpuData.getResolutionMax());
+            componentService.addNewComponent(gpu);
+        } else if(memoryData.getDevice() != null){
+            memoryData.setTypeOfComponent("Memory");
+            Memory memory = new Memory(memoryData.getTypeOfComponent(),
+                    memoryData.getName(),
+                    memoryData.getPrice(),
+                    memoryData.getYear(),
+                    memoryData.getMemorySize(),
+                    memoryData.getMemoryType(),
+                    memoryData.getFrequency(),
+                    memoryData.getDevice());
+            componentService.addNewComponent(memory);
+        } else if(motherboardData.getOutputs() != null){
+            motherboardData.setTypeOfComponent("Motherboard");
+            Motherboard motherboard = new Motherboard(motherboardData.getTypeOfComponent(),
+                    motherboardData.getName(),
+                    motherboardData.getPrice(),
+                    motherboardData.getYear(),
+                    motherboardData.getSocket(),
+                    motherboardData.getMemory(),
+                    motherboardData.getFrequency(),
+                    motherboardData.getOutputs());
+            componentService.addNewComponent(motherboard);
+        } else if(osData.getDischarge() != null){
+            osData.setTypeOfComponent("OS");
+            OS os = new OS(osData.getTypeOfComponent(),
+                    osData.getName(),
+                    osData.getPrice(),
+                    osData.getYear(),
+                    osData.getEdition(),
+                    osData.getDischarge());
+            componentService.addNewComponent(os);
+        } else if(powerSupplyData.getDeviceType() != null){
+            powerSupplyData.setTypeOfComponent("Power supply");
+            PowerSupply powerSupply = new PowerSupply(powerSupplyData.getTypeOfComponent(),
+                    powerSupplyData.getName(),
+                    powerSupplyData.getPrice(),
+                    powerSupplyData.getYear(),
+                    powerSupplyData.getPower(),
+                    powerSupplyData.getDeviceType());
+            componentService.addNewComponent(powerSupply);
         }
         return "redirect:/profile/create";
     }

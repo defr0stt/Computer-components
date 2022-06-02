@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 @Table(name = "case_details")  // for table in DB
 @PrimaryKeyJoinColumn(name = "component_id")
 public class Case extends Component {
+
     @Column(name="case_type")
     private String type;
 
@@ -45,34 +47,37 @@ public class Case extends Component {
         this.color = color;
     }
 
-    public static Case checkParams(Case startCase, Case finishCase){
-        startCase = (Case) checkMainParams(startCase, finishCase);
-        if(!startCase.getType().equals(finishCase.getType())){
-            startCase.setType(finishCase.getType());
-        }
-        if(!startCase.getColor().equals(finishCase.getColor())){
-            startCase.setColor(finishCase.getColor());
-        }
-        return startCase;
+    public Case(Case aCase) {
+        this(aCase.getTypeOfComponent(), aCase.getName(), aCase.getPrice(),
+                aCase.getYear(), aCase.getType(), aCase.getColor());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, color);
     }
 
     @Override
     public boolean equals(Object obj) {
         Case otherCase = (Case) (obj);
-        if(this.getName().equals(otherCase.getName())){
-            if(this.getTypeOfComponent().equals(otherCase.getTypeOfComponent())){
-                if(this.getPrice().equals(otherCase.getPrice())){
-                    if(this.getYear().equals(otherCase.getYear())){
-                        if(this.getType().equals(otherCase.getType())){
-                            if(this.getColor().equals(otherCase.getColor())){
-                                return true;
+        try {
+            if (this.getName().equals(otherCase.getName())) {
+                if (this.getTypeOfComponent().equals(otherCase.getTypeOfComponent())) {
+                    if (this.getPrice().equals(otherCase.getPrice())) {
+                        if (this.getYear().equals(otherCase.getYear())) {
+                            if (this.getType().equals(otherCase.getType())) {
+                                if (this.getColor().equals(otherCase.getColor())) {
+                                    return true;
+                                }
                             }
                         }
                     }
                 }
             }
+            return false;
+        } catch (NullPointerException e){
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -81,6 +86,7 @@ public class Case extends Component {
                 "id=" + getId() +
                 ", typeOfComponent='" + getTypeOfComponent() + '\'' +
                 ", name='" + getName() + '\'' +
+                ", price=" + getPrice() +
                 ", year='" + getYear() + '\'' +
                 ", type='" + type + '\'' +
                 ", color='" + color + '\'' +

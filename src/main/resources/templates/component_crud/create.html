@@ -22,6 +22,34 @@
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="case_check" onchange="checkboxes()">
             <label class="form-check-label" for="case_check">Case</label>
         </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="hard_check" onchange="checkboxes()">
+            <label class="form-check-label" for="hard_check">Hardware</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cooler_check" onchange="checkboxes()">
+            <label class="form-check-label" for="cooler_check">Cooler</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="gpu_check" onchange="checkboxes()">
+            <label class="form-check-label" for="gpu_check">GPU</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="memory_check" onchange="checkboxes()">
+            <label class="form-check-label" for="memory_check">Memory</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="motherboard_check" onchange="checkboxes()">
+            <label class="form-check-label" for="motherboard_check">Motherboard</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="os_check" onchange="checkboxes()">
+            <label class="form-check-label" for="os_check">OS</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="supply_check" onchange="checkboxes()">
+            <label class="form-check-label" for="supply_check">Power supply</label>
+        </div>
     </div>
     <br>
     <br>
@@ -183,7 +211,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Year</span>
                 </div>
-                <input id="case_year1" name="comp_year" placeholder="Enter year of component"
+                <input id="comp_year1" name="comp_year" placeholder="Enter year of component"
                        class="form-control"  type="text"
                        th:field="*{year}" th:errorclass="is-invalid">
             </div>
@@ -212,7 +240,6 @@
                 </select>
             </div>
 
-
             <div class="form-group">
                 <input name="recover-submit" class="btn btn-lg btn-primary btn-block"
                        style="background: black;border-color: black"
@@ -220,6 +247,583 @@
             </div>
         </div>
         <!--        <input type="hidden" class="hide" name="token" id="token1" value="">-->
+    </form>
+
+        <!--Hardware FORM-->
+        <form id="hardware_form" role="form" autocomplete="off"
+              class="form" method="post" action="#"
+              th:action="@{/profile/create}" th:object="${hardware}" style="display: none;">
+            <div class="marginListText" style="width: 45%;">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Name</span>
+                    </div>
+                    <input id="comp_name3" name="comp_name" placeholder="Enter name of component"
+                           class="form-control"  type="text"
+                           th:field="*{name}" th:errorclass="is-invalid">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Price</span>
+                    </div>
+                    <input id="comp_price3" name="price" placeholder="Enter price of component"
+                           class="form-control"  type="text"
+                           th:field="*{price}" th:errorclass="is-invalid">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Year</span>
+                    </div>
+                    <input id="comp_year3" name="comp_year" placeholder="Enter year of component"
+                           class="form-control"  type="text"
+                           th:field="*{year}" th:errorclass="is-invalid">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Memory size</span>
+                    </div>
+                    <input id="hardware_size" name="hardware_size" placeholder="Enter size of hardware"
+                           class="form-control"  type="text"
+                           th:field="*{size}" th:errorclass="is-invalid">
+                    <span class="input-group-text">GB</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Disk type</span>
+                    </div>
+                    <select id="hardware_disk_type" name="hardware_disk_type"
+                            class="form-control"
+                            th:field="*{diskType}" th:errorclass="is-invalid">
+                        <option value="Inner" selected="selected">Inner</option>
+                        <option value="Outer">Outer</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Connection type</span>
+                    </div>
+                    <input id="hardware_connection" name="hardware_connection" placeholder="Enter size type of hardware connection"
+                           class="form-control"  type="text"
+                           th:field="*{connection}" th:errorclass="is-invalid">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Buffer size</span>
+                    </div>
+                    <select id="disk_buffer_size" name="disk_buffer_size"
+                           class="form-control"
+                           th:field="*{diskBufferSize}" th:errorclass="is-invalid">
+                        <option value="64" selected="selected">64</option>
+                        <option value="128">128</option>
+                        <option value="256">256</option>
+                    </select>
+                    <span class="input-group-text">MB</span>
+                </div>
+
+                <div class="form-group">
+                    <input name="recover-submit" class="btn btn-lg btn-primary btn-block"
+                           style="background: black;border-color: black"
+                           value="Create hardware" type="submit">
+                </div>
+            </div>
+        </form>
+
+    <!--Cooler FORM-->
+    <form id="cooler_form" role="form" autocomplete="off"
+          class="form" method="post" action="#"
+          th:action="@{/profile/create}" th:object="${cooler}" style="display: none;">
+        <div class="marginListText" style="width: 45%;">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Name</span>
+                </div>
+                <input id="comp_name4" name="comp_name" placeholder="Enter name of component"
+                       class="form-control"  type="text"
+                       th:field="*{name}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Price</span>
+                </div>
+                <input id="comp_price4" name="price" placeholder="Enter price of component"
+                       class="form-control"  type="text"
+                       th:field="*{price}" th:errorclass="is-invalid">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Year</span>
+                </div>
+                <input id="comp_year4" name="comp_year" placeholder="Enter year of component"
+                       class="form-control"  type="text"
+                       th:field="*{year}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Type</span>
+                </div>
+                <select id="cooler_type" name="cooler_type"
+                        class="form-control"
+                        th:field="*{type}" th:errorclass="is-invalid">
+                    <option value="PC" selected="selected">For PC</option>
+                    <option value="Components">For components</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">TDP</span>
+                </div>
+                <input id="cooler_tdp" name="cooler_tdp" placeholder="Enter tdp of cooler"
+                        class="form-control" type="text"
+                        th:field="*{tdp}" th:errorclass="is-invalid">
+                <span class="input-group-text">W</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Socket</span>
+                </div>
+                <input id="cooler_socket" name="cooler_socket" placeholder="Enter cooler socket"
+                       class="form-control"  type="text"
+                       th:field="*{socket}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Speed base</span>
+                </div>
+                <input id="cooler_speed_base" name="cooler_speed_base" placeholder="Enter cooler base speed"
+                       class="form-control"  type="text"
+                       th:field="*{speedBase}" th:errorclass="is-invalid">
+                <span class="input-group-text">rpm</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Speed max</span>
+                </div>
+                <input id="cooler_speed_max" name="cooler_speed_max" placeholder="Enter cooler max speed"
+                       class="form-control"  type="text"
+                       th:field="*{speedMax}" th:errorclass="is-invalid">
+                <span class="input-group-text">rpm</span>
+            </div>
+
+            <div class="form-group">
+                <input name="recover-submit" class="btn btn-lg btn-primary btn-block"
+                       style="background: black;border-color: black"
+                       value="Create cooler" type="submit">
+            </div>
+        </div>
+    </form>
+
+    <!--GPU FORM-->
+    <form id="gpu_form" role="form" autocomplete="off"
+          class="form" method="post" action="#"
+          th:action="@{/profile/create}" th:object="${gpu}" style="display: none;">
+        <div class="marginListText" style="width: 45%;">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Name</span>
+                </div>
+                <input id="comp_name5" name="comp_name" placeholder="Enter name of component"
+                       class="form-control"  type="text"
+                       th:field="*{name}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Price</span>
+                </div>
+                <input id="comp_price5" name="price" placeholder="Enter price of component"
+                       class="form-control"  type="text"
+                       th:field="*{price}" th:errorclass="is-invalid">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Year</span>
+                </div>
+                <input id="comp_year5" name="comp_year" placeholder="Enter year of component"
+                       class="form-control"  type="text"
+                       th:field="*{year}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Chip name</span>
+                </div>
+                <input id="gpu_chip" name="gpu_chip" placeholder="Enter chip name of gpu"
+                        class="form-control" type="text"
+                        th:field="*{chipName}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Memory type</span>
+                </div>
+                <select id="gpu_mem_type" name="gpu_mem_type"
+                        class="form-control"
+                        th:field="*{memoryType}" th:errorclass="is-invalid">
+                    <option value="DDR4" selected="selected">DDR4</option>
+                    <option value="DDR5">DDR5</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Memory size</span>
+                </div>
+                <input id="gpu_mem_size" name="gpu_mem_size" placeholder="Enter size of memory"
+                       class="form-control" type="text"
+                       th:field="*{memorySize}" th:errorclass="is-invalid">
+                <span class="input-group-text">GB</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Cooling system</span>
+                </div>
+                <select id="gpu_cooling_sys" name="gpu_cooling_sys"
+                        class="form-control"
+                        th:field="*{coolingSys}" th:errorclass="is-invalid">
+                    <option value="Active" selected="selected">Active</option>
+                    <option value="Passive">Passive</option>
+                    <option value="Water">Water</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Frequency</span>
+                </div>
+                <input id="gpu_freq" name="gpu_freq" placeholder="Enter memory frequency"
+                       class="form-control"  type="text"
+                       th:field="*{frequency}" th:errorclass="is-invalid">
+                <span class="input-group-text">MGz</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Max resolution</span>
+                </div>
+                <input id="gpu_resolution" name="gpu_resolution" placeholder="Enter max resolution"
+                       class="form-control"  type="text"
+                       th:field="*{resolutionMax}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="form-group">
+                <input name="recover-submit" class="btn btn-lg btn-primary btn-block"
+                       style="background: black;border-color: black"
+                       value="Create gpu" type="submit">
+            </div>
+        </div>
+    </form>
+
+    <!--Motherboard FORM-->
+    <form id="motherboard_form" role="form" autocomplete="off"
+          class="form" method="post" action="#"
+          th:action="@{/profile/create}" th:object="${motherboard}" style="display: none;">
+        <div class="marginListText" style="width: 45%;">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Name</span>
+                </div>
+                <input id="comp_name7" name="comp_name" placeholder="Enter name of component"
+                       class="form-control"  type="text"
+                       th:field="*{name}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Price</span>
+                </div>
+                <input id="comp_price7" name="price" placeholder="Enter price of component"
+                       class="form-control"  type="text"
+                       th:field="*{price}" th:errorclass="is-invalid">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Year</span>
+                </div>
+                <input id="comp_year7" name="comp_year" placeholder="Enter year of component"
+                       class="form-control"  type="text"
+                       th:field="*{year}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Socket</span>
+                </div>
+                <input id="board_socket" name="board_socket" placeholder="Enter name of board socket"
+                       class="form-control"  type="text"
+                       th:field="*{socket}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Memory</span>
+                </div>
+                <input id="board_memory" name="board_memory" placeholder="Enter info about of board memory"
+                       class="form-control"  type="text"
+                       th:field="*{memory}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Frequency</span>
+                </div>
+                <input id="board_freq" name="board_freq" placeholder="Enter memory frequency"
+                       class="form-control"  type="text"
+                       th:field="*{frequency}" th:errorclass="is-invalid">
+                <span class="input-group-text">MGz</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Output</span>
+                </div>
+                <input id="board_out" name="board_out" placeholder="Enter board outputs"
+                       class="form-control"  type="text"
+                       th:field="*{outputs}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="form-group">
+                <input name="recover-submit" class="btn btn-lg btn-primary btn-block"
+                       style="background: black;border-color: black"
+                       value="Create motherboard" type="submit">
+            </div>
+        </div>
+    </form>
+
+    <!--Memory form-->
+    <form id="memory_form" role="form" autocomplete="off"
+          class="form" method="post" action="#"
+          th:action="@{/profile/create}" th:object="${memory}" style="display: none;">
+        <div class="marginListText" style="width: 45%;">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Name</span>
+                </div>
+                <input id="comp_name6" name="comp_name" placeholder="Enter name of component"
+                       class="form-control"  type="text"
+                       th:field="*{name}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Price</span>
+                </div>
+                <input id="comp_price6" name="price" placeholder="Enter price of component"
+                       class="form-control"  type="text"
+                       th:field="*{price}" th:errorclass="is-invalid">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Year</span>
+                </div>
+                <input id="case_year6" name="comp_year" placeholder="Enter year of component"
+                       class="form-control"  type="text"
+                       th:field="*{year}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Size</span>
+                </div>
+                <input id="memory_size" name="memory_size" placeholder="Enter count of memory"
+                       class="form-control" type="text"
+                       th:field="*{memorySize}" th:errorclass="is-invalid">
+                <span class="input-group-text">GB</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Memory type</span>
+                </div>
+                <select id="memory_type" name="memory_type"
+                        class="form-control"
+                        th:field="*{memoryType}" th:errorclass="is-invalid">
+                    <option value="DDR4" selected="selected">DDR4</option>
+                    <option value="DDR5">DDR5</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Frequency</span>
+                </div>
+                <input id="memory_freq" name="memory_freq" placeholder="Enter memory frequency"
+                       class="form-control"  type="text"
+                       th:field="*{frequency}" th:errorclass="is-invalid">
+                <span class="input-group-text">MGz</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Device</span>
+                </div>
+                <select id="memory_device" name="memory_device"
+                        class="form-control"
+                        th:field="*{device}" th:errorclass="is-invalid">
+                    <option value="PC" selected="selected">PC</option>
+                    <option value="Laptop">Laptop</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input name="recover-submit" class="btn btn-lg btn-primary btn-block"
+                       style="background: black;border-color: black"
+                       value="Create memory" type="submit">
+            </div>
+        </div>
+    </form>
+
+    <!--OS form-->
+    <form id="os_form" role="form" autocomplete="off"
+          class="form" method="post" action="#"
+          th:action="@{/profile/create}" th:object="${os}" style="display: none;">
+        <div class="marginListText" style="width: 45%;">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Name</span>
+                </div>
+                <input id="comp_name8" name="comp_name" placeholder="Enter name of component"
+                       class="form-control"  type="text"
+                       th:field="*{name}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Price</span>
+                </div>
+                <input id="comp_price8" name="price" placeholder="Enter price of component"
+                       class="form-control"  type="text"
+                       th:field="*{price}" th:errorclass="is-invalid">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Year</span>
+                </div>
+                <input id="comp_year8" name="comp_year" placeholder="Enter year of component"
+                       class="form-control"  type="text"
+                       th:field="*{year}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Edition</span>
+                </div>
+                <input id="os_edition" name="os_edition" placeholder="Enter os edition"
+                       class="form-control" type="text"
+                       th:field="*{edition}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Discharge</span>
+                </div>
+                <select id="os_discharge" name="os_discharge"
+                        class="form-control"
+                        th:field="*{discharge}" th:errorclass="is-invalid">
+                    <option value="64" selected="selected">x64</option>
+                    <option value="32">x32</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input name="recover-submit" class="btn btn-lg btn-primary btn-block"
+                       style="background: black;border-color: black"
+                       value="Create os" type="submit">
+            </div>
+        </div>
+    </form>
+
+    <!--Power Supply form-->
+    <form id="supply_form" role="form" autocomplete="off"
+          class="form" method="post" action="#"
+          th:action="@{/profile/create}" th:object="${supply}" style="display: none;">
+        <div class="marginListText" style="width: 45%;">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Name</span>
+                </div>
+                <input id="comp_name9" name="comp_name" placeholder="Enter name of component"
+                       class="form-control"  type="text"
+                       th:field="*{name}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Price</span>
+                </div>
+                <input id="comp_price9" name="price" placeholder="Enter price of component"
+                       class="form-control"  type="text"
+                       th:field="*{price}" th:errorclass="is-invalid">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Year</span>
+                </div>
+                <input id="comp_year9" name="comp_year" placeholder="Enter year of component"
+                       class="form-control"  type="text"
+                       th:field="*{year}" th:errorclass="is-invalid">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Power</span>
+                </div>
+                <input id="supply_power" name="supply_power" placeholder="Enter power of power supply"
+                       class="form-control" type="text"
+                       th:field="*{power}" th:errorclass="is-invalid">
+                <span class="input-group-text">Wt</span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Type</span>
+                </div>
+                <select id="supply_type" name="supply_type"
+                        class="form-control"
+                        th:field="*{deviceType}" th:errorclass="is-invalid">
+                    <option value="Desktop" selected="selected">Desktop</option>
+                    <option value="Laptop">Laptop</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input name="recover-submit" class="btn btn-lg btn-primary btn-block"
+                       style="background: black;border-color: black"
+                       value="Create power supply" type="submit">
+            </div>
+        </div>
     </form>
 
     <footer th:insert="blocks/footer :: footer1" style="margin-top: 115px;"></footer>

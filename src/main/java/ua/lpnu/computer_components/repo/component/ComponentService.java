@@ -59,28 +59,7 @@ public class ComponentService {
     }
 
     public void updateComponent(Long id, Component component) {
-        if(component!=null){
-            Optional<Component> componentOptional = componentRepository.findById(id);
-            if(component.getTypeOfComponent().equals("CPU")){
-                CPU cpu = (CPU)(componentOptional.get());
-                CPU otherCpu = (CPU) component;
-                if(!cpu.equals(otherCpu)){
-                    CPU temp = CPU.checkParams(cpu,otherCpu);
-                    cpu = temp;
-                    componentRepository.deleteById(cpu.getId());
-                    componentRepository.save(cpu);
-                }
-
-            } else if (component.getTypeOfComponent().equals("Case")){
-                Case aCase = (Case)(componentOptional.get());
-                Case otherCase = (Case) component;
-                if(!aCase.equals(otherCase)){
-                    Case temp = Case.checkParams(aCase,otherCase);
-                    aCase = temp;
-                    componentRepository.deleteById(aCase.getId());
-                    componentRepository.save(aCase);
-                }
-            }
-        }
+        componentRepository.deleteById(id);
+        componentRepository.save(component);
     }
 }

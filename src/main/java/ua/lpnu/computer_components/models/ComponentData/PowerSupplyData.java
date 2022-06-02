@@ -7,22 +7,23 @@ import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
-public class CaseData extends ComponentData {
-    @NotEmpty(message = "Type can not be empty")
-    private String type;
+public class PowerSupplyData extends ComponentData {
 
-    @NotEmpty(message = "Color can not be empty")
-    private String color;
+    @NotEmpty(message = "Power can not be empty")
+    private Integer power;
+
+    @NotEmpty(message = "Device type can not be empty")
+    private String deviceType;
 
     @Override
     public String toString() {
-        return "Case{" +
+        return "PowerSupplyData{" +
                 "typeOfComponent='" + getTypeOfComponent() + '\'' +
                 ", name='" + getName() + '\'' +
                 ", price=" + getPrice() +
-                ", year='" + getYear() + '\'' +
-                ", type='" + type + '\'' +
-                ", color='" + color + '\'' +
+                ", year=" + getYear() +
+                ", power=" + power +
+                ", deviceType='" + deviceType + '\'' +
                 '}';
     }
 }
