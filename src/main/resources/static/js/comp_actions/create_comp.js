@@ -43,6 +43,13 @@ function checkboxes() {
 function updateComponent() {
     document.getElementById('cpu_update_form').style.display = 'none';
     document.getElementById('case_update_form').style.display = 'none';
+    document.getElementById('hardware_update_form').style.display = 'none';
+    document.getElementById('cooler_update_form').style.display = 'none';
+    document.getElementById('gpu_update_form').style.display = 'none';
+    document.getElementById('motherboard_update_form').style.display = 'none';
+    document.getElementById('memory_update_form').style.display = 'none';
+    document.getElementById('os_update_form').style.display = 'none';
+    document.getElementById('supply_update_form').style.display = 'none';
 
     let condition = document.getElementById('compDetails').innerHTML;
     console.log(condition);
@@ -50,5 +57,19 @@ function updateComponent() {
         document.getElementById('cpu_update_form').style.display = 'block';
     } else if(condition.match(/.*Case.*/)){
         document.getElementById('case_update_form').style.display = 'block';
+    } else if(condition.match(/.*Hardware.*/)){
+        document.getElementById('hardware_update_form').style.display = 'block';
+    } else if(condition.match(/.*Cooler.*/)){
+        document.getElementById('cooler_update_form').style.display = 'block';
+    } else if(condition.match(/.*GPU.*/)){
+        document.getElementById('gpu_update_form').style.display = 'block';
+    } else if(condition.match(/.*Motherboard.*/)){
+        document.getElementById('motherboard_update_form').style.display = 'block';
+    } else if(condition.match(/.*Memory.*/)){
+        document.getElementById('memory_update_form').style.display = 'block';
+    } else if(condition.match(/.*OS.*/)){
+        document.getElementById('os_update_form').style.display = 'block';
+    } else if(condition.match(/.*Power supply.*/)){
+        document.getElementById('supply_update_form').style.display = 'block';
     }
 }

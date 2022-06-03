@@ -173,12 +173,40 @@ public class ComponentCrudController {
         Optional<Component> component = componentService.findComponentById(id);
         model.addAttribute("cpuToUpdate",new CPU());
         model.addAttribute("caseToUpdate",new Case());
+        model.addAttribute("hardwareToUpdate",new Hardware());
+        model.addAttribute("coolerToUpdate",new Cooler());
+        model.addAttribute("gpuToUpdate",new GPU());
+        model.addAttribute("boardToUpdate",new Motherboard());
+        model.addAttribute("memoryToUpdate",new Memory());
+        model.addAttribute("osToUpdate",new OS());
+        model.addAttribute("supplyToUpdate",new PowerSupply());
         if(component.get().getTypeOfComponent().equals("CPU")){
             CPU cpu = (CPU) component.get();
             model.addAttribute("cpuToUpdate",cpu);
         } else if(component.get().getTypeOfComponent().equals("Case")) {
             Case aCase = (Case) component.get();
             model.addAttribute("caseToUpdate",aCase);
+        } else if(component.get().getTypeOfComponent().equals("Hardware")){
+            Hardware hardware = (Hardware) component.get();
+            model.addAttribute("hardwareToUpdate",hardware);
+        } else if(component.get().getTypeOfComponent().equals("Cooler")){
+            Cooler cooler = (Cooler) component.get();
+            model.addAttribute("coolerToUpdate",cooler);
+        } else if(component.get().getTypeOfComponent().equals("GPU")){
+            GPU gpu = (GPU) component.get();
+            model.addAttribute("gpuToUpdate",gpu);
+        } else if(component.get().getTypeOfComponent().equals("Motherboard")){
+            Motherboard motherboard = (Motherboard) component.get();
+            model.addAttribute("boardToUpdate",motherboard);
+        } else if(component.get().getTypeOfComponent().equals("Memory")){
+            Memory memory = (Memory) component.get();
+            model.addAttribute("memoryToUpdate",memory);
+        } else if(component.get().getTypeOfComponent().equals("OS")){
+            OS os = (OS) component.get();
+            model.addAttribute("osToUpdate",os);
+        } else if(component.get().getTypeOfComponent().equals("Power supply")){
+            PowerSupply powerSupply = (PowerSupply) component.get();
+            model.addAttribute("supplyToUpdate",powerSupply);
         }
         model.addAttribute("componentType",component.get().getTypeOfComponent());
         model.addAttribute("componentName",component.get().getName());
@@ -188,15 +216,42 @@ public class ComponentCrudController {
     @PostMapping("/update/{id}")
     public String componentUpdateId(@PathVariable("id") Long id,
                                     final @Valid CPU cpu,
-                                    final @Valid Case aCase
-                                    ){
+                                    final @Valid Case aCase,
+                                    final @Valid Hardware hardware,
+                                    final @Valid Cooler cooler,
+                                    final @Valid GPU gpu,
+                                    final @Valid Motherboard motherboard,
+                                    final @Valid Memory memory,
+                                    final @Valid OS os,
+                                    final @Valid PowerSupply powerSupply){
         if(componentService.existComponent(id)){
             cpu.setTypeOfComponent("CPU");
             aCase.setTypeOfComponent("Case");
-            if(cpu.getTypeOfComponent().equals("CPU")){
+            hardware.setTypeOfComponent("Hardware");
+            cooler.setTypeOfComponent("Cooler");
+            gpu.setTypeOfComponent("GPU");
+            motherboard.setTypeOfComponent("Motherboard");
+            memory.setTypeOfComponent("Memory");
+            os.setTypeOfComponent("OS");
+            powerSupply.setTypeOfComponent("Power supply");
+            if(cpu.getGraphic() != null){
                 componentService.updateComponent(id,cpu);
-            } else if (aCase.getTypeOfComponent().equals("Case")){
+            } else if (aCase.getColor() != null){
                 componentService.updateComponent(id,aCase);
+            } else if(hardware.getDiskBufferSize() != null){
+                componentService.updateComponent(id,hardware);
+            } else if(cooler.getTdp() != null){
+                componentService.updateComponent(id,cooler);
+            } else if(gpu.getResolutionMax() != null){
+                componentService.updateComponent(id,gpu);
+            } else if(motherboard.getOutputs() != null){
+                componentService.updateComponent(id,motherboard);
+            } else if(memory.getDevice() != null){
+                componentService.updateComponent(id,memory);
+            } else if(os.getDischarge() != null){
+                componentService.updateComponent(id,os);
+            } else if(powerSupply.getDeviceType() != null){
+                componentService.updateComponent(id,powerSupply);
             }
         }
         return "redirect:/profile/update_delete";
