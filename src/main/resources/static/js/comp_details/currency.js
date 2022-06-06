@@ -8,17 +8,29 @@ function currency() {
         if(document.getElementById('dollar').checked){
             price /= 30;
             price += '$';
-            prMin.setAttribute('max','2000');
-            prMax.setAttribute('max','2000');
-            prMax.setAttribute('value','2000');
+            if(document.getElementsByTagName("title")[0].innerHTML === 'Cooler'){
+                prMin.setAttribute('max','150');
+                prMax.setAttribute('max','150');
+                prMax.setAttribute('value','150');
+            } else {
+                prMin.setAttribute('max','2000');
+                prMax.setAttribute('max','2000');
+                prMax.setAttribute('value','2000');
+            }
+
             prMax.innerHTML = '2000';
         } else {
             price *= 30;
             price += '₴';
-            prMin.setAttribute('max','60000');
-            prMax.setAttribute('max','60000');
-            prMax.setAttribute('value','60000');
-            prMax.innerHTML = '60000';
+            if(document.getElementsByTagName("title")[0].innerHTML === 'Cooler'){
+                prMin.setAttribute('max','4500');
+                prMax.setAttribute('max','4500');
+                prMax.setAttribute('value','4500');
+            } else {
+                prMin.setAttribute('max','60000');
+                prMax.setAttribute('max','60000');
+                prMax.setAttribute('value','60000');
+            }
         }
         allComponents[i].getElementsByTagName('h3')[1].innerHTML = price;
     }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${memory_name}" id="List of components"></title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body>
+<header th:insert="blocks/header :: header1" style="margin-bottom: 135px; display: block;"></header>
+<div class="marginListText">
+    <h2 class="font-weight-bold" th:text="${memory_name}"></h2>
+</div>
+<br>
+<div class="marginListText">
+    <h4 class="font-weight-bold" th:text="${memory.getPrice() + '$'}"></h4>
+</div>
+<br>
+<br>
+<div class="container mt-5">
+    <div class="alert alert-info mt-2" style="margin: 70px 0 0 0;padding: 10px;left: 25%;" id="table">
+        <p>
+        <h5 th:text="${memory.getDevice() + ' memory'}" class="marginListText"></h5>
+        </p>
+        <br>
+        <p>
+            <span style="font-weight: bold;">Size :</span>
+            <span th:text="${memory.getMemorySize()} + ' GB'"></span>
+        </p>
+        <p>
+            <span style="font-weight: bold;">Frequency :</span>
+            <span th:text="${memory.getFrequency()} + 'MHz'"></span>
+        </p>
+        <p style="margin: -80px 0 0 290px;display: block;">
+            <span style="font-weight: bold;">Type :</span>
+            <span th:text="${memory.getMemoryType}"></span>
+        </p>
+        <p style="margin: 16px 0 0 290px;display: block;">
+            <span style="font-weight: bold;">Year :</span>
+            <span th:text="${memory.getYear()}"></span>
+        </p>
+    </div>
+</div>
+<img id="img" th:src="@{/image/components/memory/{name}.jpg(name=${memory_name})}" alt="" width="550" height="230">
+<footer th:insert="blocks/footer :: footer1" style="margin-top: 150px; display: block;"></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/navbar_active.js}"></script>
+<script type="text/javascript" th:src="@{/js/comp_details/table_size.js}"></script>
+</body>
+</html>
