@@ -170,7 +170,7 @@
             <h4>GPU 1</h4>
         </div>
         <br>
-        <select name="gpu_select" id="gpu_select1" class="marginListText">
+        <select name="gpu_select" id="gpu_select1" class="marginListText" onchange="changeComponent()">
             <option th:each="gpuElement : ${gpu}" th:value="${gpuElement}" th:text="${gpuElement.name}"></option>
         </select>
         <br>
@@ -214,7 +214,7 @@
             <h4>GPU 2</h4>
         </div>
         <br>
-        <select name="gpu_select" id="gpu_select2" class="marginListText">
+        <select name="gpu_select" id="gpu_select2" class="marginListText" onchange="changeComponent()">
             <option th:each="gpuElement : ${gpu}" th:value="${gpuElement}" th:text="${gpuElement.name}"></option>
         </select>
         <br>
@@ -260,19 +260,70 @@
             <h4>Case 1</h4>
         </div>
         <br>
-        <select name="case_select" id="case_select1" class="marginListText">
-            <option th:each="caseElement : ${aCase}" th:value="${caseElement.name}" th:text="${caseElement.name}"></option>
+        <select name="case_select" id="case_select1" class="marginListText" onchange="changeComponent()">
+            <option th:each="caseElement : ${aCase}" th:value="${caseElement}" th:text="${caseElement.name}"></option>
         </select>
         <br>
         <br>
+        <div style="margin-right: auto; margin-left: auto;" id="case_table_1">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="case_name1"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="case_price1"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Color :</span>
+                    <span id="case_color1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Type :</span>
+                    <span id="case_type1"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="case_year1"></span>
+                </p>
+                <p style="margin: 40px 0 0 290px;display: block;">
+                </p>
+            </div>
+        </div>
         <br>
         <div class="marginListText">
             <h4>Case 2</h4>
         </div>
         <br>
-        <select name="case_select" id="case_select2" class="marginListText">
-            <option th:each="caseElement : ${aCase}" th:value="${caseElement.name}" th:text="${caseElement.name}"></option>
+        <select name="case_select" id="case_select2" class="marginListText" onchange="changeComponent()">
+            <option th:each="caseElement : ${aCase}" th:value="${caseElement}" th:text="${caseElement.name}"></option>
         </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="case_table_2">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="case_name2"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="case_price2"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Color :</span>
+                    <span id="case_color2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Type :</span>
+                    <span id="case_type2"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="case_year2"></span>
+                </p>
+                <p style="margin: 40px 0 0 290px;display: block;">
+                </p>
+            </div>
+        </div>
     </div>
 
     <div id="hardware_select_div">
@@ -280,7 +331,7 @@
             <h4>Hardware 1</h4>
         </div>
         <br>
-        <select name="hardware_select" id="hardware_select1" class="marginListText">
+        <select name="hardware_select" id="hardware_select1" class="marginListText" onchange="changeComponent()">
             <option th:each="hardwareElement : ${hardware}" th:value="${hardwareElement}" th:text="${hardwareElement.name}"></option>
         </select>
         <br>
@@ -316,7 +367,7 @@
             <h4>Hardware 2</h4>
         </div>
         <br>
-        <select name="hardware_select" id="hardware_select2" class="marginListText">
+        <select name="hardware_select" id="hardware_select2" class="marginListText" onchange="changeComponent()">
             <option th:each="hardwareElement : ${hardware}" th:value="${hardwareElement}" th:text="${hardwareElement.name}"></option>
         </select>
         <br>
@@ -354,19 +405,75 @@
             <h4>OS 1</h4>
         </div>
         <br>
-        <select name="os_select" id="os_select1" class="marginListText">
-            <option th:each="osElement : ${os}" th:value="${osElement.name}" th:text="${osElement.name}"></option>
+        <select name="os_select" id="os_select1" class="marginListText" onchange="changeComponent()">
+            <option th:each="osElement : ${os}" th:value="${osElement}" th:text="${osElement.name}"></option>
         </select>
         <br>
-        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="os_table_1">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="os_name1"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="os_price1"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">OS name :</span>
+                    <span id="os_name_specification1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Discharge :</span>
+                    <span id="os_discharge1"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Edition :</span>
+                    <span id="os_edition1"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="os_year1"></span>
+
+                </p>
+            </div>
+        </div>
         <br>
         <div class="marginListText">
             <h4>OS 2</h4>
         </div>
         <br>
-        <select name="os_select" id="os_select2" class="marginListText">
-            <option th:each="osElement : ${os}" th:value="${osElement.name}" th:text="${osElement.name}"></option>
+        <select name="os_select" id="os_select2" class="marginListText" onchange="changeComponent()">
+            <option th:each="osElement : ${os}" th:value="${osElement}" th:text="${osElement.name}"></option>
         </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="os_table_2">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="os_name2"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="os_price2"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">OS name :</span>
+                    <span id="os_name_specification2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Discharge :</span>
+                    <span id="os_discharge2"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Edition :</span>
+                    <span id="os_edition2"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="os_year2"></span>
+
+                </p>
+            </div>
+        </div>
     </div>
 
     <div id="supply_select_div">
@@ -374,19 +481,65 @@
             <h4>Power supply 1</h4>
         </div>
         <br>
-        <select name="supply_select" id="supply_select1" class="marginListText">
-            <option th:each="supplyElement : ${supply}" th:value="${supplyElement.name}" th:text="${supplyElement.name}"></option>
+        <select name="supply_select" id="supply_select1" class="marginListText" onchange="changeComponent()">
+            <option th:each="supplyElement : ${supply}" th:value="${supplyElement}" th:text="${supplyElement.name}"></option>
         </select>
         <br>
-        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="supply_table_1">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="supply_name1"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="supply_price1"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Power :</span>
+                    <span id="supply_power1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Device :</span>
+                    <span id="supply_device1"></span>
+                </p>
+                <p style="margin: -40px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="supply_year1"></span>
+                </p>
+            </div>
+        </div>
         <br>
         <div class="marginListText">
             <h4>Power supply 2</h4>
         </div>
         <br>
-        <select name="supply_select" id="supply_select2" class="marginListText">
-            <option th:each="supplyElement : ${supply}" th:value="${supplyElement.name}" th:text="${supplyElement.name}"></option>
+        <select name="supply_select" id="supply_select2" class="marginListText" onchange="changeComponent()">
+            <option th:each="supplyElement : ${supply}" th:value="${supplyElement}" th:text="${supplyElement.name}"></option>
         </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="supply_table_2">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="supply_name2"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="supply_price2"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Power :</span>
+                    <span id="supply_power2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Device :</span>
+                    <span id="supply_device2"></span>
+                </p>
+                <p style="margin: -40px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="supply_year2"></span>
+                </p>
+            </div>
+        </div>
     </div>
 
     <div id="motherboard_select_div">
@@ -394,19 +547,81 @@
             <h4>Motherboard 1</h4>
         </div>
         <br>
-        <select name="motherboard_select" id="motherboard_select1" class="marginListText">
-            <option th:each="motherboardElement : ${motherboard}" th:value="${motherboardElement.name}" th:text="${motherboardElement.name}"></option>
+        <select name="motherboard_select" id="motherboard_select1" class="marginListText" onchange="changeComponent()">
+            <option th:each="motherboardElement : ${motherboard}" th:value="${motherboardElement}" th:text="${motherboardElement.name}"></option>
         </select>
         <br>
-        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="motherboard_table_1">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="motherboard_name1"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="motherboard_price1"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Memory :</span>
+                    <span id="motherboard_memory1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Socket :</span>
+                    <span id="motherboard_socket1"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Frequency :</span>
+                    <span id="motherboard_frequency1"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="motherboard_year1"></span>
+                </p>
+                <p style="margin: 16px 0 0 0;display: block;">
+                    <span style="font-weight: bold;">Outputs :</span>
+                    <span id="motherboard_outputs1"></span>
+                </p>
+            </div>
+        </div>
         <br>
         <div class="marginListText">
             <h4>Motherboard 2</h4>
         </div>
         <br>
-        <select name="motherboard_select" id="motherboard_select2" class="marginListText">
-            <option th:each="motherboardElement : ${motherboard}" th:value="${motherboardElement.name}" th:text="${motherboardElement.name}"></option>
+        <select name="motherboard_select" id="motherboard_select2" class="marginListText" onchange="changeComponent()">
+            <option th:each="motherboardElement : ${motherboard}" th:value="${motherboardElement}" th:text="${motherboardElement.name}"></option>
         </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="motherboard_table_2">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="motherboard_name2"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="motherboard_price2"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Memory :</span>
+                    <span id="motherboard_memory2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Socket :</span>
+                    <span id="motherboard_socket2"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Frequency :</span>
+                    <span id="motherboard_frequency2"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="motherboard_year2"></span>
+                </p>
+                <p style="margin: 16px 0 0 0;display: block;">
+                    <span style="font-weight: bold;">Outputs :</span>
+                    <span id="motherboard_outputs2"></span>
+                </p>
+            </div>
+        </div>
     </div>
 
     <div id="memory_select_div">
@@ -414,27 +629,80 @@
             <h4>Memory 1</h4>
         </div>
         <br>
-        <select name="memory_select" id="memory_select1" class="marginListText">
-            <option th:each="memoryElement : ${memory}" th:value="${memoryElement.name}" th:text="${memoryElement.name}"></option>
+        <select name="memory_select" id="memory_select1" class="marginListText" onchange="changeComponent()">
+            <option th:each="memoryElement : ${memory}" th:value="${memoryElement}" th:text="${memoryElement.name}"></option>
         </select>
         <br>
-        <br>
-        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="memory_table_1">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="memory_name1"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="memory_price1"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Size :</span>
+                    <span id="memory_size1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Frequency :</span>
+                    <span id="memory_frequency1"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Type :</span>
+                    <span id="memory_type1"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="memory_year1"></span>
+                </p>
+            </div>
+        </div>
         <div class="marginListText">
             <h4>Memory 2</h4>
         </div>
         <br>
-        <select name="motherboard_select" id="memory_select2" class="marginListText">
-            <option th:each="memoryElement : ${memory}" th:value="${memoryElement.name}" th:text="${memoryElement.name}"></option>
+        <select name="motherboard_select" id="memory_select2" class="marginListText" onchange="changeComponent()">
+            <option th:each="memoryElement : ${memory}" th:value="${memoryElement}" th:text="${memoryElement.name}"></option>
         </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="memory_table_2">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="memory_name2"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="memory_price2"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Size :</span>
+                    <span id="memory_size2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Frequency :</span>
+                    <span id="memory_frequency2"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Type :</span>
+                    <span id="memory_type2"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="memory_year2"></span>
+                </p>
+            </div>
+        </div>
     </div>
-
+    <br>
     <div id="cooler_select_div">
         <div class="marginListText">
             <h4>Cooler 1</h4>
         </div>
         <br>
-        <select name="cooler_select" id="cooler_select1" class="marginListText">
+        <select name="cooler_select" id="cooler_select1" class="marginListText" onchange="changeComponent()">
             <option th:each="coolerElement : ${cooler}" th:value="${coolerElement}" th:text="${coolerElement.name}"></option>
         </select>
         <br>
@@ -474,7 +742,7 @@
             <h4>Cooler 2</h4>
         </div>
         <br>
-        <select name="cooler_select" id="cooler_select2" class="marginListText">
+        <select name="cooler_select" id="cooler_select2" class="marginListText" onchange="changeComponent()">
             <option th:each="coolerElement : ${cooler}" th:value="${coolerElement}" th:text="${coolerElement.name}"></option>
         </select>
         <br>
@@ -508,6 +776,7 @@
                     <span id="cooler_socket2"></span>
                 </p>
             </div>
+    </div>
     </div>
 
 <footer th:insert="blocks/footer :: footer1" style="margin-top: 150px; display: block;"></footer>

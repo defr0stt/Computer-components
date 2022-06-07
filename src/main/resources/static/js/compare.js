@@ -222,6 +222,190 @@ function changeComponent(){
     document.getElementById('cooler_speed_max2').innerHTML = cooler.speedMax + ' rpm';
     document.getElementById('cooler_socket2').innerHTML = cooler.socket;
     document.getElementById('cooler_year2').innerHTML = cooler.year;
+
+    //---------------------------Motherboard---------------------------
+    let motherboard_select1 = document.getElementById('motherboard_select1').value;
+    let motherboard_select2 = document.getElementById('motherboard_select2').value;
+
+    let motherboard = {
+        name : getParams('name',motherboard_select1),
+        typeOfComponent : getParams('typeOfComponent',motherboard_select1),
+        price : getParams('price',motherboard_select1),
+        year : getParams('year',motherboard_select1),
+        memory : getParams('memory', motherboard_select1),
+        frequency : getParams('frequency',motherboard_select1),
+        socket : getParams('socket',motherboard_select1),
+        outputs : getParams('outputs', motherboard_select1)
+    }
+
+    document.getElementById('motherboard_name1').innerHTML = motherboard.name + ', ' + motherboard.typeOfComponent;
+    document.getElementById('motherboard_price1').innerHTML = motherboard.price + '$';
+    document.getElementById('motherboard_memory1').innerHTML = motherboard.memory;
+    document.getElementById('motherboard_frequency1').innerHTML = motherboard.frequency + 'MHz';
+    document.getElementById('motherboard_socket1').innerHTML = motherboard.socket;
+    document.getElementById('motherboard_outputs1').innerHTML = motherboard.outputs;
+    document.getElementById('motherboard_year1').innerHTML = motherboard.year;
+
+    motherboard = {
+        name : getParams('name',motherboard_select2),
+        typeOfComponent : getParams('typeOfComponent',motherboard_select2),
+        price : getParams('price',motherboard_select2),
+        year : getParams('year',motherboard_select2),
+        memory : getParams('memory', motherboard_select2),
+        frequency : getParams('frequency',motherboard_select2),
+        socket : getParams('socket',motherboard_select2),
+        outputs : getParams('outputs', motherboard_select2)
+    }
+
+    document.getElementById('motherboard_name2').innerHTML = motherboard.name + ', ' + motherboard.typeOfComponent;
+    document.getElementById('motherboard_price2').innerHTML = motherboard.price + '$';
+    document.getElementById('motherboard_memory2').innerHTML = motherboard.memory;
+    document.getElementById('motherboard_frequency2').innerHTML = motherboard.frequency + 'MHz';
+    document.getElementById('motherboard_socket2').innerHTML = motherboard.socket;
+    document.getElementById('motherboard_outputs2').innerHTML = motherboard.outputs;
+    document.getElementById('motherboard_year2').innerHTML = motherboard.year;
+
+    //---------------------------Memory---------------------------
+    let memory_select1 = document.getElementById('memory_select1').value;
+    let memory_select2 = document.getElementById('memory_select2').value;
+
+    let memory = {
+        name : getParams('name',memory_select1),
+        price : getParams('price',memory_select1),
+        year : getParams('year',memory_select1),
+        type : getParams('memoryType',memory_select1),
+        size : getParams('memorySize',memory_select1),
+        frequency : getParams('frequency',memory_select1),
+        device : getParams('device',memory_select1),
+    }
+
+    document.getElementById('memory_name1').innerHTML = memory.name + ', ' + memory.device;
+    document.getElementById('memory_price1').innerHTML = memory.price + '$';
+    document.getElementById('memory_size1').innerHTML = memory.size + ' GB';
+    document.getElementById('memory_frequency1').innerHTML = memory.frequency + 'MHz';
+    document.getElementById('memory_type1').innerHTML = memory.type;
+    document.getElementById('memory_year1').innerHTML = memory.year;
+
+    memory = {
+        name : getParams('name',memory_select2),
+        price : getParams('price',memory_select2),
+        year : getParams('year',memory_select2),
+        type : getParams('memoryType',memory_select2),
+        size : getParams('memorySize',memory_select2),
+        frequency : getParams('frequency',memory_select2),
+        device : getParams('device',memory_select2),
+    }
+
+    document.getElementById('memory_name2').innerHTML = memory.name + ', ' + memory.device;
+    document.getElementById('memory_price2').innerHTML = memory.price + '$';
+    document.getElementById('memory_size2').innerHTML = memory.size + ' GB';
+    document.getElementById('memory_frequency2').innerHTML = memory.frequency + 'MHz';
+    document.getElementById('memory_type2').innerHTML = memory.type;
+    document.getElementById('memory_year2').innerHTML = memory.year;
+
+    //---------------------------OS---------------------------
+    let os_select1 = document.getElementById('os_select1').value;
+    let os_select2 = document.getElementById('os_select2').value;
+
+    let os = {
+        name : getParams('name',os_select1),
+        price : getParams('price',os_select1),
+        year : getParams('year',os_select1),
+        typeOfComponent : getParams('typeOfComponent',os_select1),
+        discharge : getParams('discharge',os_select1),
+        edition : getParams('edition',os_select1),
+    }
+
+    document.getElementById('os_name1').innerHTML = os.name + ', ' + os.typeOfComponent;
+    document.getElementById('os_price1').innerHTML = os.price + '$';
+    document.getElementById('os_name_specification1').innerHTML = os.name;
+    document.getElementById('os_discharge1').innerHTML = 'x' + os.discharge;
+    document.getElementById('os_edition1').innerHTML = os.edition;
+    document.getElementById('os_year1').innerHTML = os.year;
+
+    os = {
+        name : getParams('name',os_select2),
+        price : getParams('price',os_select2),
+        year : getParams('year',os_select2),
+        typeOfComponent : getParams('typeOfComponent',os_select2),
+        discharge : getParams('discharge',os_select2),
+        edition : getParams('edition',os_select2),
+    }
+
+    document.getElementById('os_name2').innerHTML = os.name + ', ' + os.typeOfComponent;
+    document.getElementById('os_price2').innerHTML = os.price + '$';
+    document.getElementById('os_name_specification2').innerHTML = os.name;
+    document.getElementById('os_discharge2').innerHTML = 'x' + os.discharge;
+    document.getElementById('os_edition2').innerHTML = os.edition;
+    document.getElementById('os_year2').innerHTML = os.year;
+
+    //---------------------------Supply---------------------------
+    let supply_select1 = document.getElementById('supply_select1').value;
+    let supply_select2 = document.getElementById('supply_select2').value;
+
+    let supply = {
+        name : getParams('name',supply_select1),
+        price : getParams('price',supply_select1),
+        year : getParams('year',supply_select1),
+        typeOfComponent : getParams('typeOfComponent',supply_select1),
+        power : getParams('power',supply_select1),
+        device : getParams('device',supply_select1),
+    }
+
+    document.getElementById('supply_name1').innerHTML = supply.name + ', ' + supply.typeOfComponent;
+    document.getElementById('supply_price1').innerHTML = supply.price + '$';
+    document.getElementById('supply_power1').innerHTML = supply.power + 'W';
+    document.getElementById('supply_device1').innerHTML = supply.device;
+    document.getElementById('supply_year1').innerHTML = supply.year;
+
+    supply = {
+        name : getParams('name',supply_select2),
+        price : getParams('price',supply_select2),
+        year : getParams('year',supply_select2),
+        typeOfComponent : getParams('typeOfComponent',supply_select2),
+        power : getParams('power',supply_select2),
+        device : getParams('device',supply_select2),
+    }
+
+    document.getElementById('supply_name2').innerHTML = supply.name + ', ' + supply.typeOfComponent;
+    document.getElementById('supply_price2').innerHTML = supply.price + '$';
+    document.getElementById('supply_power2').innerHTML = supply.power + 'W';
+    document.getElementById('supply_device2').innerHTML = supply.device;
+    document.getElementById('supply_year2').innerHTML = supply.year;
+
+    //---------------------------Case---------------------------
+    let case_select1 = document.getElementById('case_select1').value;
+    let case_select2 = document.getElementById('case_select2').value;
+
+    let aCase = {
+        name : getParams('name',case_select1),
+        price : getParams('price',case_select1),
+        year : getParams('year',case_select1),
+        typeOfComponent : getParams('typeOfComponent',case_select1),
+        color : getParams('color',case_select1),
+        type : getParams('type=',case_select1),
+    }
+
+    document.getElementById('case_name1').innerHTML = aCase.name + ', ' + aCase.typeOfComponent;
+    document.getElementById('case_price1').innerHTML = aCase.price + '$';
+    document.getElementById('case_color1').innerHTML = aCase.color;
+    document.getElementById('case_type1').innerHTML = aCase.type;
+    document.getElementById('case_year1').innerHTML = aCase.year;
+
+    aCase = {
+        name : getParams('name',case_select2),
+        price : getParams('price',case_select2),
+        year : getParams('year',case_select2),
+        typeOfComponent : getParams('typeOfComponent',case_select2),
+        color : getParams('color',case_select2),
+        type : getParams('type=',case_select2),
+    }
+
+    document.getElementById('case_name2').innerHTML = aCase.name + ', ' + aCase.typeOfComponent;
+    document.getElementById('case_price2').innerHTML = aCase.price + '$';
+    document.getElementById('case_color2').innerHTML = aCase.color;
+    document.getElementById('case_type2').innerHTML = aCase.type;
+    document.getElementById('case_year2').innerHTML = aCase.year;
 }
 
 function getParams(string, option){
