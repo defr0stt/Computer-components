@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title id="Compare components">Compare components</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body onload="compareComponentsChange()">
+<header th:insert="blocks/header :: header1" style="margin-bottom: 135px; display: block;"></header>
+<div class="marginListText">
+    <h2>Compare components</h2>
+</div>
+<div class="marginListText">
+    <h6 style="color: #999999;">On this page you can choose components to compare by their characteristics.
+        Every component has its own parameters. <p>All data are current as of June 7, 2022</p></h6>
+</div>
+<br>
+<br>
+<div class="marginListText">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cpu_check" onchange="compareComponentsChange()" checked>
+        <label class="form-check-label" for="cpu_check">CPU</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="case_check" onchange="compareComponentsChange()">
+        <label class="form-check-label" for="case_check">Case</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="hard_check" onchange="compareComponentsChange()">
+        <label class="form-check-label" for="hard_check">Hardware</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cooler_check" onchange="compareComponentsChange()">
+        <label class="form-check-label" for="cooler_check">Cooler</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="gpu_check" onchange="compareComponentsChange()">
+        <label class="form-check-label" for="gpu_check">GPU</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="memory_check" onchange="compareComponentsChange()">
+        <label class="form-check-label" for="memory_check">Memory</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="motherboard_check" onchange="compareComponentsChange()">
+        <label class="form-check-label" for="motherboard_check">Motherboard</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="os_check" onchange="compareComponentsChange()">
+        <label class="form-check-label" for="os_check">OS</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="supply_check" onchange="compareComponentsChange()">
+        <label class="form-check-label" for="supply_check">Power supply</label>
+    </div>
+</div>
+<br>
+<br>
+    <!--CPU-->
+    <div id="cpu_select_div">
+        <div class="marginListText">
+            <h4>CPU 1</h4>
+        </div>
+        <br>
+        <select name="cpu_select" id="cpu_select1" class="marginListText" onchange="changeComponent()">
+            <option th:each="cpuElement1 : ${cpu}" th:value="${cpuElement1}" th:text="${cpuElement1.name}"></option>
+        </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="cpu_table_1">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="cpu_name1"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="cpu_price1"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Socket :</span>
+                    <span id="cpu_socket1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Base frequency :</span>
+                    <span id="cpu_base_frequecny1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Max frequency :</span>
+                    <span id="cpu_max_frequecny1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="cpu_year1"></span>
+                </p>
+                <p style="margin: -160px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">GPU core :</span>
+                    <span id="cpu_graphic1"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Cores :</span>
+                    <span id="cpu_cores1"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Thread count :</span>
+                    <span id="cpu_thread1"></span>
+                </p>
+                <p style="margin: 17px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Max temperature :</span>
+                    <span id="cpu_max_temperature1"></span>
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="marginListText">
+            <h4>CPU 2</h4>
+        </div>
+        <br>
+        <select name="cpu_select" id="cpu_select2" class="marginListText" onchange="changeComponent()">
+            <option th:each="cpuElement2 : ${cpu}" th:value="${cpuElement2}" th:text="${cpuElement2.name}"></option>
+        </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="cpu_table_2">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="cpu_name2"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="cpu_price2"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Socket :</span>
+                    <span id="cpu_socket2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Base frequency :</span>
+                    <span id="cpu_base_frequecny2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Max frequency :</span>
+                    <span id="cpu_max_frequecny2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="cpu_year2"></span>
+                </p>
+                <p style="margin: -160px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">GPU core :</span>
+                    <span id="cpu_graphic2"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Cores :</span>
+                    <span id="cpu_cores2"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Thread count :</span>
+                    <span id="cpu_thread2"></span>
+                </p>
+                <p style="margin: 17px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Max temperature :</span>
+                    <span id="cpu_max_temperature2"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="gpu_select_div">
+        <div class="marginListText">
+            <h4>GPU 1</h4>
+        </div>
+        <br>
+        <select name="gpu_select" id="gpu_select1" class="marginListText">
+            <option th:each="gpuElement : ${gpu}" th:value="${gpuElement}" th:text="${gpuElement.name}"></option>
+        </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="gpu_table_1">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="gpu_name1"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="gpu_price1"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Chip name :</span>
+                    <span id="gpu_chip1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Memory :</span>
+                    <span id="gpu_mem_size1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Frequency :</span>
+                    <span id="gpu_mem_frequency1"></span>
+                </p>
+                <p style="margin: -120px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Cooling system :</span>
+                    <span id="gpu_cooling_sys1"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Max resolution :</span>
+                    <span id="gpu_resolution1"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="gpu_year1"></span>
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="marginListText">
+            <h4>GPU 2</h4>
+        </div>
+        <br>
+        <select name="gpu_select" id="gpu_select2" class="marginListText">
+            <option th:each="gpuElement : ${gpu}" th:value="${gpuElement}" th:text="${gpuElement.name}"></option>
+        </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="gpu_table_2">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="gpu_name2"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="gpu_price2"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Chip name :</span>
+                    <span id="gpu_chip2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Memory :</span>
+                    <span id="gpu_mem_size2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Frequency :</span>
+                    <span id="gpu_mem_frequency2"></span>
+                </p>
+                <p style="margin: -120px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Cooling system :</span>
+                    <span id="gpu_cooling_sys2"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Max resolution :</span>
+                    <span id="gpu_resolution2"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="gpu_year2"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="case_select_div">
+        <div class="marginListText">
+            <h4>Case 1</h4>
+        </div>
+        <br>
+        <select name="case_select" id="case_select1" class="marginListText">
+            <option th:each="caseElement : ${aCase}" th:value="${caseElement.name}" th:text="${caseElement.name}"></option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <div class="marginListText">
+            <h4>Case 2</h4>
+        </div>
+        <br>
+        <select name="case_select" id="case_select2" class="marginListText">
+            <option th:each="caseElement : ${aCase}" th:value="${caseElement.name}" th:text="${caseElement.name}"></option>
+        </select>
+    </div>
+
+    <div id="hardware_select_div">
+        <div class="marginListText">
+            <h4>Hardware 1</h4>
+        </div>
+        <br>
+        <select name="hardware_select" id="hardware_select1" class="marginListText">
+            <option th:each="hardwareElement : ${hardware}" th:value="${hardwareElement}" th:text="${hardwareElement.name}"></option>
+        </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="hardware_table_1">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="hardware_name1"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="hardware_price1"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Size :</span>
+                    <span id="hardware_size1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Connection :</span>
+                    <span id="hardware_connection1"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Buffer size :</span>
+                    <span id="hardware_buff_size1"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="hardware_year1"></span>
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="marginListText">
+            <h4>Hardware 2</h4>
+        </div>
+        <br>
+        <select name="hardware_select" id="hardware_select2" class="marginListText">
+            <option th:each="hardwareElement : ${hardware}" th:value="${hardwareElement}" th:text="${hardwareElement.name}"></option>
+        </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="hardware_table_2">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="hardware_name2"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="hardware_price2"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Size :</span>
+                    <span id="hardware_size2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Connection :</span>
+                    <span id="hardware_connection2"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Buffer size :</span>
+                    <span id="hardware_buff_size2"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="hardware_year2"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="os_select_div">
+        <div class="marginListText">
+            <h4>OS 1</h4>
+        </div>
+        <br>
+        <select name="os_select" id="os_select1" class="marginListText">
+            <option th:each="osElement : ${os}" th:value="${osElement.name}" th:text="${osElement.name}"></option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <div class="marginListText">
+            <h4>OS 2</h4>
+        </div>
+        <br>
+        <select name="os_select" id="os_select2" class="marginListText">
+            <option th:each="osElement : ${os}" th:value="${osElement.name}" th:text="${osElement.name}"></option>
+        </select>
+    </div>
+
+    <div id="supply_select_div">
+        <div class="marginListText">
+            <h4>Power supply 1</h4>
+        </div>
+        <br>
+        <select name="supply_select" id="supply_select1" class="marginListText">
+            <option th:each="supplyElement : ${supply}" th:value="${supplyElement.name}" th:text="${supplyElement.name}"></option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <div class="marginListText">
+            <h4>Power supply 2</h4>
+        </div>
+        <br>
+        <select name="supply_select" id="supply_select2" class="marginListText">
+            <option th:each="supplyElement : ${supply}" th:value="${supplyElement.name}" th:text="${supplyElement.name}"></option>
+        </select>
+    </div>
+
+    <div id="motherboard_select_div">
+        <div class="marginListText">
+            <h4>Motherboard 1</h4>
+        </div>
+        <br>
+        <select name="motherboard_select" id="motherboard_select1" class="marginListText">
+            <option th:each="motherboardElement : ${motherboard}" th:value="${motherboardElement.name}" th:text="${motherboardElement.name}"></option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <div class="marginListText">
+            <h4>Motherboard 2</h4>
+        </div>
+        <br>
+        <select name="motherboard_select" id="motherboard_select2" class="marginListText">
+            <option th:each="motherboardElement : ${motherboard}" th:value="${motherboardElement.name}" th:text="${motherboardElement.name}"></option>
+        </select>
+    </div>
+
+    <div id="memory_select_div">
+        <div class="marginListText">
+            <h4>Memory 1</h4>
+        </div>
+        <br>
+        <select name="memory_select" id="memory_select1" class="marginListText">
+            <option th:each="memoryElement : ${memory}" th:value="${memoryElement.name}" th:text="${memoryElement.name}"></option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <div class="marginListText">
+            <h4>Memory 2</h4>
+        </div>
+        <br>
+        <select name="motherboard_select" id="memory_select2" class="marginListText">
+            <option th:each="memoryElement : ${memory}" th:value="${memoryElement.name}" th:text="${memoryElement.name}"></option>
+        </select>
+    </div>
+
+    <div id="cooler_select_div">
+        <div class="marginListText">
+            <h4>Cooler 1</h4>
+        </div>
+        <br>
+        <select name="cooler_select" id="cooler_select1" class="marginListText">
+            <option th:each="coolerElement : ${cooler}" th:value="${coolerElement}" th:text="${coolerElement.name}"></option>
+        </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="cooler_table_1">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="cooler_name1"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="cooler_price1"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Tdp :</span>
+                    <span id="cooler_tdp1"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="cooler_year1"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Speed base :</span>
+                    <span id="cooler_speed_base1"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Speed max :</span>
+                    <span id="cooler_speed_max1"></span>
+                </p>
+                <p style="margin: 16px 0 0 0;display: block;">
+                    <span style="font-weight: bold;">Socket :</span>
+                    <span id="cooler_socket1"></span>
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="marginListText">
+            <h4>Cooler 2</h4>
+        </div>
+        <br>
+        <select name="cooler_select" id="cooler_select2" class="marginListText">
+            <option th:each="coolerElement : ${cooler}" th:value="${coolerElement}" th:text="${coolerElement.name}"></option>
+        </select>
+        <br>
+        <div style="margin-right: auto; margin-left: auto;" id="cooler_table_2">
+            <div class="alert alert-info mt-2" style="margin-left: auto;margin-right: auto; width: 40%">
+                <p>
+                <h5 class="marginListText" id="cooler_name2"></h5>
+                </p>
+                <p>
+                <h6 class="marginListText" id="cooler_price2"></h6>
+                </p>
+                <br>
+                <p>
+                    <span style="font-weight: bold;">Tdp :</span>
+                    <span id="cooler_tdp2"></span>
+                </p>
+                <p>
+                    <span style="font-weight: bold;">Year :</span>
+                    <span id="cooler_year2"></span>
+                </p>
+                <p style="margin: -80px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Speed base :</span>
+                    <span id="cooler_speed_base2"></span>
+                </p>
+                <p style="margin: 16px 0 0 290px;display: block;">
+                    <span style="font-weight: bold;">Speed max :</span>
+                    <span id="cooler_speed_max2"></span>
+                </p>
+                <p style="margin: 16px 0 0 0;display: block;">
+                    <span style="font-weight: bold;">Socket :</span>
+                    <span id="cooler_socket2"></span>
+                </p>
+            </div>
+    </div>
+
+<footer th:insert="blocks/footer :: footer1" style="margin-top: 150px; display: block;"></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/navbar_active.js}"></script>
+<script th:inline="javascript" type="text/javascript" th:src="@{/js/compare.js}"></script>
+</body>
+</html>
