@@ -12,6 +12,10 @@ function currency() {
                 prMin.setAttribute('max','150');
                 prMax.setAttribute('max','150');
                 prMax.setAttribute('value','150');
+            } else if(document.getElementsByTagName("title")[0].innerHTML === 'Home page') {
+                prMin.setAttribute('max','10000');
+                prMax.setAttribute('max','10000');
+                prMax.setAttribute('value','10000');
             } else {
                 prMin.setAttribute('max','2000');
                 prMax.setAttribute('max','2000');
@@ -26,6 +30,10 @@ function currency() {
                 prMin.setAttribute('max','4500');
                 prMax.setAttribute('max','4500');
                 prMax.setAttribute('value','4500');
+            } else if(document.getElementsByTagName("title")[0].innerHTML === 'Home page') {
+                prMin.setAttribute('max','300000');
+                prMax.setAttribute('max','300000');
+                prMax.setAttribute('value','300000');
             } else {
                 prMin.setAttribute('max','60000');
                 prMax.setAttribute('max','60000');

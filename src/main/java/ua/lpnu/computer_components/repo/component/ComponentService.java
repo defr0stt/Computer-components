@@ -62,4 +62,8 @@ public class ComponentService {
         componentRepository.deleteById(id);
         componentRepository.save(component);
     }
+
+    public Component findByName(String name){
+        return componentRepository.findByName(name);
+    }
 }

@@ -15,4 +15,5 @@ public interface ComponentRepository extends JpaRepository<Component,Long> {    
     // @Query("SELECT c FROM CPU c WHERE c.name = '...'")
     Optional<Component> findComponentByName(String name);
     List<Component> findByTypeOfComponent(String type);
+    Component findByName(String name);
 }
